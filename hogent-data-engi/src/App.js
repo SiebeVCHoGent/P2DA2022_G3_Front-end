@@ -1,9 +1,10 @@
 import './App.css';
+import Navigation from './components/Navigation';
 
 function App() {
   return (
     <div className='body'>
-      <nav></nav>
+        <Navigation></Navigation>
       <main className=''>
       
       </main>

@@ -1,13 +1,26 @@
+@font-face {
+  font-family: 'CodeProBlack';
+  src: url('files/code-pro-black/Code\ Pro\ Black.otf');
+}
+
+@font-face {
+  font-family: 'Montserat';
+  src: url('files/Fredoka/Fredoka-VariableFont_wdth\,wght.ttf');
+}
+
+
 .body{
   background-color: black;
   height: 100vh;
   width: 100vw;
 
   display: flex;
+
+  font-family: 'Montserat';
 }
 
 nav{
-  width: 15vw;
+  width: 300px;
 
   color: white;
 }
@@ -17,4 +30,38 @@ main{
   width: 85vw;
 
   border-top-left-radius: 50px;
+}
+
+.title{
+  margin: 25px 20px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.subtitle{
+  display: block;
+  font-size: 15px;
+}
+
+.nav-sub{
+  margin-left: 20px;
+}
+
+.nav-sub-title{
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nav-sub-list{
+  list-style: none;
+  margin-left: -15px;
+}
+
+.nav-sub-list li{
+  margin-top: 10px;
+}
+
+.nav-sub-list li:hover{
+  font-weight: bold;
 }
