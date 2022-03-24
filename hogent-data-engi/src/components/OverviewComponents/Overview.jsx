@@ -10,7 +10,7 @@ export default function Overview()
             <h1>Dashboard</h1>
             <SearchBar/>
             <DefaultInfoCompany/>
-            <ZoektermScore/>
+            
             <Duurzaamheidsscore/>
         </div>
     </main>

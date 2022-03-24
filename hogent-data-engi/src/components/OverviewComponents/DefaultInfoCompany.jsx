@@ -33,6 +33,10 @@ export default function DefaultInfoCompany(){
                 <th>Website</th>
                 <td><a href="https://www.volckaert.be" target='_blank' rel="noreferrer">www.volckaert.be</a></td>
             </tr>
+            <tr>
+                <th>Jaarverslag</th>
+                <td><a href="http://static.staatsbladmonitor.be/2021pdf/2021-03500408.pdf" target='_blank' rel="noreferrer">staatsbladmonitor</a></td>
+            </tr>
         </table>
         <table className="table-default-info table-economics">
             <tr>
