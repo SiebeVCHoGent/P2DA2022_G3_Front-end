@@ -8,10 +8,6 @@
   src: url('files/Fredoka/Fredoka-VariableFont_wdth\,wght.ttf');
 }
 
-body, html, #root{
-  height: 100%;
-}
-
 .body{
   background-color: black;
   height: 100%;
