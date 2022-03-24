@@ -1,4 +1,5 @@
 import DefaultInfoCompany from "./DefaultInfoCompany";
+import Duurzaamheidsscore from "./Duurzaamheidsscore";
 import SearchBar from "./SearchBar";
 import ZoektermScore from "./ZoektermScore";
 
@@ -10,6 +11,7 @@ export default function Overview()
             <SearchBar/>
             <DefaultInfoCompany/>
             <ZoektermScore/>
+            <Duurzaamheidsscore/>
         </div>
     </main>
 }

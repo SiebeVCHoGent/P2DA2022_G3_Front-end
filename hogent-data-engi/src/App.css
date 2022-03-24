@@ -8,11 +8,14 @@
   src: url('files/Fredoka/Fredoka-VariableFont_wdth\,wght.ttf');
 }
 
+body, html, #root{
+  height: 100%;
+}
 
 .body{
   background-color: black;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 
   display: flex;
 
@@ -127,7 +130,6 @@ hr{
 
 .default-info-container{
   margin-top: 30px;
-  width: 800px;
 }
 
 .table-economics{
@@ -193,4 +195,16 @@ hr{
   font-size: 75px;
   padding-left: 30px;
   margin-top: -10px;
+}
+
+.duurzaam-container{
+  display: flex;
+}
+
+.duurzaam-container .duurzaam-text{
+  width: 500px;
+}
+
+.duurzaam-letter{
+  margin-right: 50px;
 }
