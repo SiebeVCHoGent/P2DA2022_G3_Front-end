@@ -40,6 +40,19 @@ h1{
   font-size: 25px;
 }
 
+h2{
+  font-size: 16px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 7px 0;
+}
+
+
+h3{
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
 .title{
   margin: 25px 20px;
   font-size: 25px;
@@ -91,6 +104,10 @@ h1{
   font-weight: bold;
 }
 
+.search-in:focus{
+  outline: none;
+}
+
 .search-glass{
   height: 40px;
   width: 60px;
@@ -102,11 +119,6 @@ h1{
   align-items: center;
 
   font-size: 20px;
-}
-
-h2{
-  font-size: 14px;
-  text-transform: uppercase;
 }
 
 hr{
@@ -140,6 +152,45 @@ hr{
   width: 400px;
 }
 
+.table-score tr:nth-of-type(1){
+  margin-top: -20px;
+}
+
 .table-default-info td{
   color: #777
+}
+
+.table-score span{
+  margin: 15px;
+  margin-right: 15px;
+  padding-left: 5px;
+  display: block;
+  border-bottom: 1px solid black;
+}
+
+.table-score th:first-of-type, .table-score td:first-of-type{
+  text-align: left;
+}
+
+.table-score th{
+  width: 150px;
+}
+
+.table-score th, .table-score td{
+  text-align: center;
+  border-right: 1px solid black;
+}
+
+.table-score .a-purple{
+  color: rgb(187, 144, 189);
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.big-letter{
+  font-family: 'CodeProBlack';
+  font-size: 75px;
+  padding-left: 30px;
+  margin-top: -10px;
 }

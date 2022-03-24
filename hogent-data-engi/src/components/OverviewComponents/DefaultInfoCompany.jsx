@@ -1,6 +1,6 @@
 export default function DefaultInfoCompany(){
     return <div className="default-info-container">
-        <h2>Volckaert - Soetens NV</h2>
+        <h3>Volckaert - Soetens NV</h3>
         <hr/>
         <div className="table-container">
         {/* TODO Implement real values */}
@@ -31,7 +31,7 @@ export default function DefaultInfoCompany(){
             </tr>
             <tr>
                 <th>Website</th>
-                <td><a href="www.volckaert.be">www.volckaert.be</a></td>
+                <td><a href="https://www.volckaert.be" target='_blank' rel="noreferrer">www.volckaert.be</a></td>
             </tr>
         </table>
         <table className="table-default-info table-economics">
