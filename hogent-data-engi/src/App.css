@@ -47,6 +47,7 @@ nav {
 }
 
 main {
+  z-index: 0;
   background-color: white;
   width: 85vw;
   border-top-left-radius: 50px;
