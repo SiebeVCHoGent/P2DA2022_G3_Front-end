@@ -1,0 +1,38 @@
+[{
+    "kmo": {
+        "ondernemingsnummer": "BE04053957723",
+        "naam": "Volckaert - Soetens NV",
+        "telefoonnummer": "+329 360 76 36",
+        "email": "/",
+        "adres": "Grote Steenweg 41",
+        "gemeente": "Lede",
+        "postcode": 9340,
+        "sector": "groothandeltabaksproducten",
+        "website": "www.volckaert.be",
+        "beursnotatie": false,
+        "aantalWerknemers": 36,
+        "isB2B": false,
+        "duurzaamheidsframework": null,
+        "jaarverslagen": [{
+            "id": "akldmad",
+            "omzetcijfer": 32225,
+            "balanstotaal": 2650,
+            "link": "http://static.staatsbladmonitor.be/2021pdf/2021-03500408.pdf"
+        }],
+        "coding_tree": {
+            "menselijk": [{
+                    "naam": "Gender Gelijkheid",
+                    "voorkomen": 110
+                },
+                {
+                    "naam": "werknemersrechten",
+                    "voorkomen": 55
+                }
+            ],
+            "natuurlijk": [{
+                "naam": "MilieuBeleid",
+                "voorkomen": 33
+            }]
+        }
+    }
+}]

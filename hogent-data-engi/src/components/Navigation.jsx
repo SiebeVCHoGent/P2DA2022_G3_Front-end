@@ -17,7 +17,7 @@ export default function Navigation()
             <div className="nav-sub">
                 <span className="nav-sub-title">APPLICATIONS</span>
                 <ul className="nav-sub-list">
-                    <li>Uitleg</li>
+                    <li>Duurzaamheid bij kmo's</li>
                 </ul>
             </div>
         </div>

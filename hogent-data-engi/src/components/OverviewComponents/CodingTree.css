@@ -8,7 +8,10 @@
     display: -ms-grid;
 
     grid-template-columns: repeat(3, 1fr);
+    -ms-grid-columns: repeat(3, 1fr);;
     grid-template-rows: repeat(16, 0.7fr);
+    -ms-grid-rows: repeat(16, 0.7fr);
+    
 
     grid-gap: 10px 50px;
     margin: 10px;
