@@ -2,7 +2,6 @@ import './CodingTree.css'
 
 import Xarrow from 'react-xarrows'
 import { useMemo, useRef } from 'react';
-import ConnectElements from 'react-connect-elements';
 
 
 const tree_connections = [
@@ -54,7 +53,7 @@ export default function CodingTree(){
 
                 {
                   tree_connections.map(con => {
-                    return <Xarrow key={con[0] + con[1]} start={con[0]} end={con[1]} zIndex={50} showHead={false} strokeWidth={5} color="#000" curveness={0.2}/>
+                    return <Xarrow key={con[0] + con[1]} start={con[0]} end={con[1]} zIndex={50} showHead={false} strokeWidth={2} color="#000" curveness={0.2}/>
                   })
                 }
         </div>
