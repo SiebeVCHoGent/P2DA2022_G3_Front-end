@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { SearchContext } from "../../contexts/SearchProvider";
+
 export default function DefaultInfoCompany(){
+    const { searchresult: sr } = useContext(SearchContext)
+
     return <div className="default-info-container">
         <h3>Volckaert - Soetens NV</h3>
         <hr/>
@@ -8,15 +13,15 @@ export default function DefaultInfoCompany(){
             <tbody>
                 <tr>
                     <th>Venootschapsnaam</th>
-                    <td>Volckaert - Soetens NV</td>
+                    <td>{sr?.naam ? sr.naam : '/'}</td>
                 </tr>
                 <tr>
                     <th>Ondernemingsnummer</th>
-                    <td>BE04053957723</td>
+                    <td>{sr?.ondernemingsnummer ? sr.ondernemingsnummer : '/'}</td>
                 </tr>
                 <tr>
                     <th>Telefoonnummer</th>
-                    <td>+329 360 76 36</td>
+                    <td>{sr?.telefoonnummer ? sr.telefoonnummer : '/'}</td>
                 </tr>
                 <tr>
                     <th>Email</th>
@@ -24,19 +29,34 @@ export default function DefaultInfoCompany(){
                 </tr>
                 <tr>
                     <th>Adres</th>
-                    <td>Grote Steenweg 41</td>
+                    <td>{sr?.adres ? sr.adres : '/'}</td>
                 </tr>
                 <tr className="multirow">
                     <th></th>
-                    <td>930, Lede</td>
+                    <td>{sr?.postcode ? sr.postcode + ', ' : ''}{sr?.gemeente ? sr.gemeente : ''}</td>
                 </tr>
                 <tr>
                     <th>Website</th>
-                    <td><a href="https://www.volckaert.be" target='_blank' rel="noreferrer">www.volckaert.be</a></td>
+                    <td>
+                        {
+                            sr?.website
+                            ? <a href={sr?.website ? 'https://' + sr.website : '#'} target='_blank' rel="noreferrer">{sr?.website ? sr.website : '/'}</a>
+                            : '/'
+                        }
+                        
+                    </td>
                 </tr>
                 <tr>
                     <th>Jaarverslag</th>
-                    <td><a href="http://static.staatsbladmonitor.be/2021pdf/2021-03500408.pdf" target='_blank' rel="noreferrer">staatsbladmonitor</a></td>
+                    <td>
+                        {
+                            sr?.jaarverslag?.link 
+                            ? <a href={sr.jaarverslag.link} target='_blank' rel="noreferrer">staatsbladmonitor</a>
+                            : '/'  
+                        }
+                    </td>
+                    
+                    <td></td>
                 </tr>
             </tbody>
         </table>
@@ -44,31 +64,31 @@ export default function DefaultInfoCompany(){
             <tbody>
                 <tr>
                     <th>Omzetcijfer</th>
-                    <td>€ 32225</td>
+                    <td>{sr?.jaarverslag?.omzetcijfer ? '€ ' +sr.jaarverslag.omzetcijfer : '/'}</td>
                 </tr>
                 <tr>
                     <th>Balanstotaal</th>
-                    <td>€ 2650</td>
+                    <td>{sr?.jaarverslag?.balanstotaal ? '€ ' +sr.jaarverslag.balanstotaal : '/'}</td>
                 </tr>
                 <tr>
                     <th>Framework voor duurzaamheidsrapportering</th>
-                    <td>Neen</td>
+                    <td>{sr?.duurzaamheidsframework === null ? 'Neen' : (sr?.duurzaamheidsframework ? sr.duurzaamheidsframework : '/')}</td>
                 </tr>
                 <tr>
                     <th>Beursnotatie</th>
-                    <td>Niet beursgenoteerd</td>
+                    <td>{sr?.beursnotatie === false ? 'Niet beursgenoteerd' : (sr?.beursnotatie ? 'Beursgenoteerd' : '/')}</td>
                 </tr>
                 <tr>
                     <th>Aantal werknemers</th>
-                    <td>36</td>
+                    <td>{sr?.aantalWerknemers ? sr.aantalWerknemers : '/'}</td>
                 </tr>
                 <tr>
                     <th>B2B of B2C</th>
-                    <td>B2C</td>
+                    <td>{sr?.isB2B === false ? 'B2C' : (sr?.isB2B ? 'B2B' : '/')}</td>
                 </tr>
                 <tr>
                     <th>Sector</th>
-                    <td>groothandeltabaksproducten</td>
+                    <td>{sr?.sector ? sr.sector : '/'}</td>
                 </tr>
             </tbody>
         </table>

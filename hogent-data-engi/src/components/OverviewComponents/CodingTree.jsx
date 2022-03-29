@@ -1,8 +1,6 @@
 import './CodingTree.css'
 
 import Xarrow from 'react-xarrows'
-import { useMemo, useRef } from 'react';
-
 
 const tree_connections = [
   ['root1', 'root2'],
@@ -42,13 +40,13 @@ export default function CodingTree(){
                 <div className="tree-obj tree-leave9" id="leave9">Gebruik van waterbronnen</div>
                 <div className="tree-obj tree-leave10" id="leave10">Emissies van broeikasgassen</div>
                 <div className="tree-obj tree-leave11" id="leave11">Vervuilende uitstoot</div>
-                <div className="tree-obj tree-leave12" id="leave12">Miliue-impact</div>
+                <div className="tree-obj tree-leave12" id="leave12">Milieu-impact</div>
                 <div className="tree-obj tree-leave13" id="leave13">Impact op gezondheid en veiligheid</div>
                 <div className="tree-obj tree-leave14" id="leave14">Verdere eisen over bepaalde onderwerpen</div>
                 <div className="tree-obj tree-leave15" id="leave15">Milieubeleid</div>
 
-                <div className="tree-obj tree-root" id='root1' ref={useRef(null)}>Duurzaamheid bij kmo's</div>
-                <div className="tree-obj tree-root2" id="root2" ref={useRef(null)}>Menselijk Kapitaal</div>
+                <div className="tree-obj tree-root" id='root1'>Duurzaamheid bij kmo's</div>
+                <div className="tree-obj tree-root2" id="root2">Menselijk Kapitaal</div>
                 <div className="tree-obj tree-root3" id="root3">Natuurlijk Kapitaal</div>
 
                 {
@@ -59,4 +57,4 @@ export default function CodingTree(){
         </div>
 
   </div>
-}
+} 
