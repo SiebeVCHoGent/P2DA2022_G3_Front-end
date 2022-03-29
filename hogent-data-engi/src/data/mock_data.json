@@ -20,7 +20,7 @@
     },
     "coding_tree": {
         "menselijk": [{
-                "naam": "Gender Gelijkheid",
+                "naam": "gender_gelijkheid",
                 "voorkomen": 110
             },
             {
@@ -29,7 +29,7 @@
             }
         ],
         "natuurlijk": [{
-            "naam": "MilieuBeleid",
+            "naam": "milieubeleid",
             "voorkomen": 33
         }]
     }

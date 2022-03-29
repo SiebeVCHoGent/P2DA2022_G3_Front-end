@@ -1,60 +1,82 @@
 import './CodingTree.css'
 
 import Xarrow from 'react-xarrows'
+import { useContext, useMemo } from 'react'
+import { SearchContext } from '../../contexts/SearchProvider'
 
 const tree_connections = [
-  ['root1', 'root2'],
-  ['root1', 'root3'],
-  ['root2', 'leave1'],
-  ['root2', 'leave2'],
-  ['root2', 'leave3'],
-  ['root2', 'leave4'],
-  ['root2', 'leave5'],
-  ['root2', 'leave6'],
-  ['root2', 'leave7'],
+  ['duurzaamheid_kmos', 'menselijk'],
+  ['duurzaamheid_kmos', 'natuurlijk'],
+  ['menselijk', 'gender_gelijkheid'],
+  ['menselijk', 'werknemersrechten'],
+  ['menselijk', 'sociale_relaties'],
+  ['menselijk', 'werkgelegenheid'],
+  ['menselijk', 'organisaties'],
+  ['menselijk', 'gezondheid'],
+  ['menselijk', 'opleiding'],
 
-  ['root3', 'leave8'],
-  ['root3', 'leave9'],
-  ['root3', 'leave10'],
-  ['root3', 'leave11'],
-  ['root3', 'leave12'],
-  ['root3', 'leave13'],
-  ['root3', 'leave14'],
-  ['root3', 'leave15'],
+  ['natuurlijk', 'energiebronnen'],
+  ['natuurlijk', 'waterbronnen'],
+  ['natuurlijk', 'broeikasgassen'],
+  ['natuurlijk', 'uitstoot'],
+  ['natuurlijk', 'milieu_impact'],
+  ['natuurlijk', 'impact_gezondheid'],
+  ['natuurlijk', 'verdere_eisen'],
+  ['natuurlijk', 'milieubeleid'],
 ]
 
-export default function CodingTree(){
+export default function CodingTree() {
 
+  const { searchresult: sr } = useContext(SearchContext)
 
-    return <div className="coding-tree-container">
-        <div className="coding-tree-grid elements">
-                <div className="tree-obj tree-leave1" id="leave1">Gender Gelijkheid</div>
-                <div className="tree-obj tree-leave2" id="leave2">Implementatie van (inter)nationale werknemersrechten</div>
-                <div className="tree-obj tree-leave3" id="leave3">Sociale relaties op het werk</div>
-                <div className="tree-obj tree-leave4" id="leave4">Werkgelegenheid</div>
-                <div className="tree-obj tree-leave5" id="leave5">Organisatie op het werk</div>
-                <div className="tree-obj tree-leave6" id="leave6">Gezondheid en veiligheid</div>
-                <div className="tree-obj tree-leave7" id="leave7">Opleidingsbeleid</div>
+  useMemo(() => {
+    if (sr?.coding_tree?.menselijk){
+      for (const el of sr?.coding_tree?.menselijk) {
+        const node = document.querySelector('#' + el.naam)
+        node?.classList.add('green')
+      }
+    }
 
-                <div className="tree-obj tree-leave8" id="leave8">Gebruik van energiebronnen</div>
-                <div className="tree-obj tree-leave9" id="leave9">Gebruik van waterbronnen</div>
-                <div className="tree-obj tree-leave10" id="leave10">Emissies van broeikasgassen</div>
-                <div className="tree-obj tree-leave11" id="leave11">Vervuilende uitstoot</div>
-                <div className="tree-obj tree-leave12" id="leave12">Milieu-impact</div>
-                <div className="tree-obj tree-leave13" id="leave13">Impact op gezondheid en veiligheid</div>
-                <div className="tree-obj tree-leave14" id="leave14">Verdere eisen over bepaalde onderwerpen</div>
-                <div className="tree-obj tree-leave15" id="leave15">Milieubeleid</div>
+    if (sr?.coding_tree?.natuurlijk){
+      for (const el of sr?.coding_tree?.natuurlijk) {
+        console.log(el.naam)
+        const node = document.querySelector('#' + el.naam)
+        console.log(node)
+        node?.classList.add('green')
+      }
+    }
+  }, [sr])
+  
 
-                <div className="tree-obj tree-root" id='root1'>Duurzaamheid bij kmo's</div>
-                <div className="tree-obj tree-root2" id="root2">Menselijk Kapitaal</div>
-                <div className="tree-obj tree-root3" id="root3">Natuurlijk Kapitaal</div>
+  return <div className="coding-tree-container">
+    <div className="coding-tree-grid elements">
+      <div className="tree-obj tree-leave1" id="gender_gelijkheid">Gender Gelijkheid</div>
+      <div className="tree-obj tree-leave2" id="werknemersrechten">Implementatie van (inter)nationale werknemersrechten</div>
+      <div className="tree-obj tree-leave3" id="sociale_relaties">Sociale relaties op het werk</div>
+      <div className="tree-obj tree-leave4" id="werkgelegenheid">Werkgelegenheid</div>
+      <div className="tree-obj tree-leave5" id="organisaties">Organisatie op het werk</div>
+      <div className="tree-obj tree-leave6" id="gezondheid">Gezondheid en veiligheid</div>
+      <div className="tree-obj tree-leave7" id="opleiding">Opleidingsbeleid</div>
 
-                {
-                  tree_connections.map(con => {
-                    return <Xarrow key={con[0] + con[1]} start={con[0]} end={con[1]} zIndex={50} showHead={false} strokeWidth={2} color="#000" curveness={0.2}/>
-                  })
-                }
-        </div>
+      <div className="tree-obj tree-leave8" id="energiebronnen">Gebruik van energiebronnen</div>
+      <div className="tree-obj tree-leave9" id="waterbronnen">Gebruik van waterbronnen</div>
+      <div className="tree-obj tree-leave10" id="broeikasgassen">Emissies van broeikasgassen</div>
+      <div className="tree-obj tree-leave11" id="uitstoot">Vervuilende uitstoot</div>
+      <div className="tree-obj tree-leave12" id="milieu_impact">Milieu-impact</div>
+      <div className="tree-obj tree-leave13" id="impact_gezondheid">Impact op gezondheid en veiligheid</div>
+      <div className="tree-obj tree-leave14" id="verdere_eisen">Verdere eisen over bepaalde onderwerpen</div>
+      <div className="tree-obj tree-leave15" id="milieubeleid">Milieubeleid</div>
+
+      <div className="tree-obj tree-root" id='duurzaamheid_kmos'>Duurzaamheid bij kmo's</div>
+      <div className="tree-obj tree-root2" id="menselijk">Menselijk Kapitaal</div>
+      <div className="tree-obj tree-root3" id="natuurlijk">Natuurlijk Kapitaal</div>
+
+      {
+        tree_connections.map(con => {
+          return <Xarrow key={con[0] + con[1]} start={con[0]} end={con[1]} zIndex={50} showHead={false} strokeWidth={2} color="#000" curveness={0.2} />
+        })
+      }
+    </div>
 
   </div>
 } 

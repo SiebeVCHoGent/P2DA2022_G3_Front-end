@@ -5,7 +5,7 @@ export default function DefaultInfoCompany(){
     const { searchresult: sr } = useContext(SearchContext)
 
     return <div className="default-info-container">
-        <h3>Volckaert - Soetens NV</h3>
+        <h3>{sr?.naam ? sr.naam : 'Nog geen bedrijf gevonden'}</h3>
         <hr/>
         <div className="table-container">
         {/* TODO Implement real values */}
