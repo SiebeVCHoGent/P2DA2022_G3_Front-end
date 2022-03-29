@@ -40,9 +40,13 @@ a {
   font-weight: bold;
 }
 
-nav {
+.nav {
   width: 300px;
   min-width: 160px;
+  color: white;
+}
+
+.nav-collapsed{
   color: white;
 }
 
@@ -121,6 +125,23 @@ th {
 .nav-sub-list li:hover {
   font-weight: bold;
   cursor: pointer;
+}
+
+.nav-hidden{
+  display: none;
+}
+
+.nav-icon{
+  float: right;
+  font-size: 30px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.nav-icon-collapsed{
+  font-size: 30px;
+  margin-top: 30px;
+  padding: 0 15px;
 }
 
 .search-container {
