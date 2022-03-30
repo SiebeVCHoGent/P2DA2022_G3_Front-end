@@ -7,6 +7,7 @@ function App() {
   return (
     <div className='body'>
           <Navigation></Navigation>
+          
           <SearchProvider>
             <Overview></Overview>
           </SearchProvider>

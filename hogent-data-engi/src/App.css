@@ -14,7 +14,9 @@
 }
 
 /* Nodig voor de background body color*/
-html, #root, body{
+html,
+#root,
+body {
   height: 100vh;
   display: flex;
   height: auto;
@@ -46,7 +48,7 @@ a {
   color: white;
 }
 
-.nav-collapsed{
+.nav-collapsed {
   color: white;
 }
 
@@ -61,13 +63,13 @@ main {
   margin: 40px;
 }
 
-.main-container{
+.main-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.dashboard-info-container{
+.dashboard-info-container {
   flex: 1 1 auto;
 }
 
@@ -127,22 +129,71 @@ th {
   cursor: pointer;
 }
 
-.nav-hidden{
+.nav-hidden {
   display: none;
 }
 
-.nav-icon{
+.nav-icon {
   float: right;
   font-size: 30px;
   margin-top: 5px;
   cursor: pointer;
 }
 
-.nav-icon-collapsed{
+.nav-icon-collapsed {
   font-size: 30px;
   margin-top: 30px;
   padding: 0 15px;
 }
+
+/*-------Header-------*/
+
+header {
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+header section {
+  max-width: 9vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header section > * {
+  max-width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header section a{
+  min-width: 100%;
+}
+header section img {
+  max-width: 100%;
+}
+.settings img{
+  min-width: 130%;
+}
+.circel-profile{
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  border: #bb90bd solid 2px;
+  height: 35px;
+  width: 35px;
+}
+
+.circel-profile img {
+  width: 100%;
+  height: auto;
+}
+
 
 .search-container {
   margin-top: 30px;
@@ -151,8 +202,8 @@ th {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 
 .search-in {
@@ -177,15 +228,15 @@ th {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 20px; 
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 20px;
 }
 
-.search-glass:hover{
+.search-glass:hover {
   cursor: pointer;
   background-color: #444;
   transition: .3s;
@@ -274,11 +325,12 @@ hr {
   margin-left: 50px;
 }
 
-.coding-tree-container{
+.coding-tree-container {
   border: 1px solid black;
   border-radius: 10px;
 
   margin-left: 50px;
+  margin-top: 30px;
 
   height: 100%;
   width: 600px;
