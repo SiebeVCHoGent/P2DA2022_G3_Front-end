@@ -21,7 +21,7 @@ body {
   display: flex;
   height: auto;
   min-height: 100%;
-  max-width: 100%;
+  min-width: 100%;
 }
 
 .body {
@@ -32,9 +32,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
 }
-
 
 a {
   color: #bb90bd;
@@ -66,6 +64,8 @@ main {
   background-color: white;
   width: 85vw;
   border-top-left-radius: 50px;
+
+  flex: 1;
 }
 
 .inside-main {
