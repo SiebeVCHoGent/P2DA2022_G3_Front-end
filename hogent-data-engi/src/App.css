@@ -156,49 +156,50 @@ th {
 }
 
 /*-------Header-------*/
+header{
+  display: flex;
+  justify-content: space-between;
+}
 
-header {
-  height: 5vh;
+.top-icons{
+  max-width: 120px;
+  width: 120px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  overflow: hidden;
+  flex-direction: row;
 }
 
-header section {
-  max-width: 9vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.flag img{
+  margin-top: 8px;
+  max-width: 30px;
 }
 
-header section > * {
-  max-width: 20%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.settings{
+  font-size: 35px;
+  margin-top: 10px;
 }
 
-header section a{
-  min-width: 100%;
+.settings a {
+  color: black;
 }
-header section img {
-  max-width: 100%;
-}
-.settings img{
-  min-width: 130%;
-}
-.circel-profile{
+
+.cirkel-profile{
   position: relative;
   overflow: hidden;
   border-radius: 50%;
   border: #bb90bd solid 2px;
   height: 35px;
   width: 35px;
+  min-width: 35px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
 }
 
-.circel-profile img {
+.cirkel-profile img {
   width: 100%;
   height: auto;
 }
