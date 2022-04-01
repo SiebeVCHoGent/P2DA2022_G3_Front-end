@@ -19,8 +19,8 @@ export default function Navigation()
                 <div className="nav-sub">
                 <span className="nav-sub-title">MENU</span>
                     <ul className="nav-sub-list">
-                        <li> <Link to={'/'}>Uitleg</Link></li>
-                        <li><Link to={'/dashboard'}>Dashboard</Link></li>
+                        <li> <Link to={'/'} className='a'>Uitleg</Link></li>
+                        <li><Link to={'/dashboard'} className='a'>Dashboard</Link></li>
                     </ul>
                 </div>
                 <div className="nav-sub">

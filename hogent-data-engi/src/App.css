@@ -42,6 +42,15 @@ a {
   font-weight: bold;
 }
 
+.nav .a{
+  color: white;
+  font-weight: normal;
+}
+
+.nav .a:hover{
+  font-weight: bold;
+}
+
 .nav {
   width: 300px;
   min-width: 160px;
