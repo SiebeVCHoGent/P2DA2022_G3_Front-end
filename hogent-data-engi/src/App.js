@@ -5,6 +5,8 @@ import { SearchProvider } from './contexts/SearchProvider';
 
 import { Routes, Route } from 'react-router-dom'
 import Uitleg from './components/Uitleg';
+import CodingTreeItemOverview from './components/OverviewComponents/CodingTreeItemOverview';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -14,7 +16,10 @@ function App() {
           <SearchProvider>
             <Routes>
                 <Route exact path='/' element={<Uitleg/>}/>
-                <Route exact path='*' element={<Overview/>} />
+                <Route exact path='dashboard' element={<Overview/>} />
+                <Route exact path='/dashboard/:item' element={<CodingTreeItemOverview />}/>
+                {/* TODO: Not Found */}
+                <Route path='*' element={<NotFound />}/> 
             </Routes>
           </SearchProvider>
       </div>
