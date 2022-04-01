@@ -3,7 +3,7 @@ import Navigation from './components/Navigation';
 import Overview from './components/OverviewComponents/Overview';
 import { SearchProvider } from './contexts/SearchProvider';
 
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Uitleg from './components/Uitleg';
 import CodingTreeItemOverview from './components/OverviewComponents/CodingTreeItemOverview';
 import NotFound from './components/NotFound';
@@ -18,8 +18,8 @@ function App() {
                 <Route exact path='/' element={<Uitleg/>}/>
                 <Route exact path='dashboard' element={<Overview/>} />
                 <Route exact path='/dashboard/:item' element={<CodingTreeItemOverview />}/>
-                {/* TODO: Not Found */}
-                <Route path='*' element={<NotFound />}/> 
+                <Route path='/404' element={<NotFound />}/> 
+                <Route path='*' element={<Navigate to={'/404'} replace />} />
             </Routes>
           </SearchProvider>
       </div>
