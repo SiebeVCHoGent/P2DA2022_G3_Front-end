@@ -345,4 +345,8 @@ hr {
   width: 600px;
 }
 
+.pure-text{
+  max-width: 800px;
+}
+
 /*# sourceMappingURL=App.css.map */
