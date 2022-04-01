@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 import { HiOutlineMenuAlt2 } from 'react-icons/hi'
+import { Link } from 'react-router-dom'
 
 export default function Navigation()
 {
@@ -18,9 +19,8 @@ export default function Navigation()
                 <div className="nav-sub">
                 <span className="nav-sub-title">MENU</span>
                     <ul className="nav-sub-list">
-                        <li>Uitleg</li>
-                        <li>Dashboard</li>
-                        <li>Overzicht</li>
+                        <li> <Link to={'/'}>Uitleg</Link></li>
+                        <li><Link to={'/dashboard'}>Dashboard</Link></li>
                     </ul>
                 </div>
                 <div className="nav-sub">
