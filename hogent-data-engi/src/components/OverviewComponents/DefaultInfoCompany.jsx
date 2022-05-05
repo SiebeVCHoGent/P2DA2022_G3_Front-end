@@ -88,7 +88,7 @@ export default function DefaultInfoCompany(){
                 </tr>
                 <tr>
                     <th>Sector</th>
-                    <td>{sr?.sector ? sr.sector : '/'}</td>
+                    <td>{sr?.sector ? <a href={`/sectoren/${sr.sectorid}`}>{sr.sector}</a> : '/'}</td>
                 </tr>
             </tbody>
         </table>

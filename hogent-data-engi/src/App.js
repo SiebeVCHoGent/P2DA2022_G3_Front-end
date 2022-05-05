@@ -7,6 +7,8 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Uitleg from './components/Uitleg';
 import CodingTreeItemOverview from './components/OverviewComponents/CodingTreeItemOverview';
 import NotFound from './components/NotFound';
+import Sectoren from './components/Sectoren/Sectoren';
+import SectorenDetails from './components/Sectoren/SectorenDetails';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <SearchProvider>
             <Routes>
                 <Route exact path='/' element={<Uitleg/>}/>
+                <Route exact path='/sectoren' element={<Sectoren />}/>
+                <Route exact path='/sectoren/:sectorid' element={<SectorenDetails />}/>
                 <Route exact path='dashboard' element={<Overview/>} />
                 <Route exact path='/dashboard/:item' element={<CodingTreeItemOverview />}/>
                 <Route path='/404' element={<NotFound />}/> 
