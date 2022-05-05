@@ -1,31 +1,27 @@
-import { useCallback, useContext, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useContext, useEffect } from "react"
+import { Navigate, useParams } from "react-router-dom"
 import { SearchContext } from "../../contexts/SearchProvider"
-
 
 export default function SectorenDetails(){
     const {sectorid} = useParams()
     const { sectorData, getSectorInfo } = useContext(SearchContext)
-    
-    const refresh = useCallback(async () => {
-        await getSectorInfo(sectorid)
-    }, [getSectorInfo, sectorid])
-
 
     useEffect(() => {
-        if (!sectorData)
+        if (!sectorData || parseInt(sectorid) !== sectorData.id)
         {
-            refresh()
+            getSectorInfo(sectorid)
         }
-    }, [refresh, sectorData])
+    }, [sectorData, getSectorInfo, sectorid])
 
-    if (sectorData)
+
+    if (sectorData && parseInt(sectorid) === sectorData.id)
         return <main>
             <div className="inside-main">
                 <h1>{sectorData.naam}</h1>
-                {console.log(sectorData)}
             </div>
         </main>
+    else if(sectorData === null)
+        return <Navigate to="/" replace />
     else
-        return <></>
+        return <main></main>
 }

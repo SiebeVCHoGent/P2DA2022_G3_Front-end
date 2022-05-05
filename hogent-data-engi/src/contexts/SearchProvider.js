@@ -40,13 +40,15 @@ export const SearchProvider = ({children}) => {
 
     const getSectorInfo = useCallback(async (id) => {
         try{
-            const url = 'http://localhost:9000/api/kmo/'
+            const url = 'http://localhost:9000/api/sector/'
             setLoading(true)
             setError()
             
-            // const {data} = await axios.get(url + query)
-            
-            setSectorData({id: id, naam: 'Niet-gespecialiseerde groothandel in niet-diepgevroren voedingsmiddelen, dranken en genotmiddelen'})
+            const {data} = await axios.get(url + id)
+            if (data.sector === null)
+                setSectorData({id: parseInt(id), naam: 'Sector niet gevonden'})
+            else
+                setSectorData(data.sector)
         }
         catch(error){
             setError(error)

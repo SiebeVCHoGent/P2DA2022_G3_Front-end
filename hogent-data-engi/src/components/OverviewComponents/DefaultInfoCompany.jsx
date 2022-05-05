@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { SearchContext } from "../../contexts/SearchProvider";
 
 export default function DefaultInfoCompany(){
@@ -88,7 +89,7 @@ export default function DefaultInfoCompany(){
                 </tr>
                 <tr>
                     <th>Sector</th>
-                    <td>{sr?.sector ? <a href={`/sectoren/${sr.sectorid}`}>{sr.sector}</a> : '/'}</td>
+                    <td>{sr?.sector ? <Link to={`/sectoren/${sr.sectorid}`}>{sr.sector}</Link> : '/'}</td>
                 </tr>
             </tbody>
         </table>
