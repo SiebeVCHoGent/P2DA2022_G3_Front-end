@@ -38,7 +38,9 @@ export default function Overview() {
                        (arrResults.length > 1 ? <><OpsommingZoeken /></> : (<><DefaultInfoCompany /> <Duurzaamheidsscore className="element element2" /></>))
                     }
                 </div>
-                <CodingTree />
+                {
+                    (arrResults.length > 1 ? <></> : <><CodingTree /></>)
+                }
             </div>
         </div>
     </main>

@@ -5,6 +5,8 @@ export default function OpsommingZoeken(){
     const { arrResults: arr, setSingleKmo } = useContext(SearchContext)
 
     return <div className="default-info-container table-container"> 
+        <h3>Zoekresultaten:</h3>
+        <hr/>
         {
             arr.map(o => {
                 return <div key={o.ondernemingsnummer} onClick={() => {setSingleKmo(o)}} className='pointer'>

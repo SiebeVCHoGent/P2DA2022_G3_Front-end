@@ -25,7 +25,7 @@ export default function DefaultInfoCompany(){
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td>/</td>
+                    <td>{sr?.email ? <a href={`mailto:${sr.email}`}>{sr.email}</a> : '/'}</td>
                 </tr>
                 <tr>
                     <th>Adres</th>

@@ -17,16 +17,15 @@ export const SearchProvider = ({children}) => {
             const url = 'http://localhost:9000/api/kmo/'
             setLoading(true)
             setError()
-
+            
             const {data} = await axios.get(url + query)
+            
+            setArrResults([])
 
             if (data.kmo.length === 1)
                 setSearchresult(data.kmo[0])
             else if(data.kmo.length === 0)
-            {
                 setSearchresult({})
-                setArrResults([])
-            }
             else
                 setArrResults(data.kmo)
             console.log(data.kmo)
