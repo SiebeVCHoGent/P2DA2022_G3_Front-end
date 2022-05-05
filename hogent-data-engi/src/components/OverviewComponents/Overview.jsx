@@ -21,10 +21,10 @@ export default function Overview() {
                 <h1>Dashboard</h1>
                 <section className="top-icons">
                     <div className="flag">
-                        <a href="#"><img src={Language} alt="settings" /></a>
+                        <a href="#e"><img src={Language} alt="settings" /></a>
                     </div>
                     <div className="settings">
-                        <a href="#"><AiFillSetting/></a>
+                        <a href="#e"><AiFillSetting/></a>
                     </div>
                     <div className="cirkel-profile">
                         <img src={Profile} alt="profile" />

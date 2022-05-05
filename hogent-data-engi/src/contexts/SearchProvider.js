@@ -1,6 +1,5 @@
 import { createContext, useCallback, useMemo, useState } from "react";
 
-import mock_data from '../data/mock_data.json'
 import axios from 'axios';
 
 export const SearchContext = createContext()
