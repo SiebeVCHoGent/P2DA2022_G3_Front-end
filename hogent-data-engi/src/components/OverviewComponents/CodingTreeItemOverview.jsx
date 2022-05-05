@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom"
+import Title from "../Title"
 
 export default function CodingTreeItemOverview()
 {
@@ -6,7 +7,7 @@ export default function CodingTreeItemOverview()
 
     return <main>
         <div className="inside-main">
-            <h1>Overzicht Coding Tree: {item}</h1>
+            <Title>Overzicht Coding Tree: {item}</Title>
         </div>
     </main>
 }

@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import Title from "./Title";
 
 export default function Uitleg() {
     return <main>
         <div className="inside-main">
             <div className="pure-text">
-                <h1>Duurzaamheid bij kmo's</h1>
+                <Title>Duurzaamheid bij kmo's</Title>
                 <p>
                     Op 21 april 2021 werd de nieuwe EU-richtlijn voor duurzaamheidsrapportering voorgesteld. Het doel is dat bedrijven meer gerichte, betrouwbare en gemakkelijk
                     toegankelijke informatie delen als basis voor duurzame besluitvorming. Voor kleine en middelgrote ondernemingen (kmo's) 

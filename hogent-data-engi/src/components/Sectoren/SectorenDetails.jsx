@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react"
 import { Navigate, useParams } from "react-router-dom"
 import { SearchContext } from "../../contexts/SearchProvider"
+import Title from "../Title"
 
 export default function SectorenDetails(){
     const {sectorid} = useParams()
@@ -17,7 +18,7 @@ export default function SectorenDetails(){
     if (sectorData && parseInt(sectorid) === sectorData.id)
         return <main>
             <div className="inside-main">
-                <h1>{sectorData.naam}</h1>
+                <Title>{sectorData.naam}</Title>
             </div>
         </main>
     else if(sectorData === null)
