@@ -5,7 +5,7 @@ export default function DefaultInfoCompany(){
     const { searchresult: sr } = useContext(SearchContext)
 
     return <div className="default-info-container">
-        <h3>{sr?.naam ? sr.naam : 'Nog geen bedrijf gevonden'}</h3>
+        <h3>{sr?.naam ? sr.naam : 'Geen bedrijf gevonden'}</h3>
         <hr/>
         <div className="table-container">
         {/* TODO Implement real values */}
@@ -76,7 +76,7 @@ export default function DefaultInfoCompany(){
                 </tr>
                 <tr>
                     <th>Beursnotatie</th>
-                    <td>{sr?.beursnotatie === false ? 'Niet beursgenoteerd' : (sr?.beursnotatie ? 'Beursgenoteerd' : '/')}</td>
+                    <td>{(sr?.beursnotatie === undefined || sr?.beursnotatie === null ? '/' : (Boolean(sr?.beursnotatie) ? 'Beursgenoteerd' : 'Niet Beursgenoteerd'))}</td>
                 </tr>
                 <tr>
                     <th>Aantal werknemers</th>
@@ -84,7 +84,7 @@ export default function DefaultInfoCompany(){
                 </tr>
                 <tr>
                     <th>B2B of B2C</th>
-                    <td>{sr?.isB2B === false ? 'B2C' : (sr?.isB2B ? 'B2B' : '/')}</td>
+                    <td>{(sr?.isB2B === undefined || sr?.isB2B === null ? '/' : (Boolean(sr?.isB2B) ? 'B2B' : 'B2C'))}</td>
                 </tr>
                 <tr>
                     <th>Sector</th>
