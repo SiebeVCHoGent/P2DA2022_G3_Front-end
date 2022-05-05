@@ -322,11 +322,24 @@ hr {
   font-weight: bold;
 }
 
+.big-letters{
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
 .big-letter {
   font-family: 'Montserat-Black';
   font-size: 75px;
   padding-left: 30px;
-  margin-top: -10px;
+  margin: 0;
+}
+
+.big-letter.smaller{
+  font-family: 'Montserat-Black';
+  font-size: 50px;
+  padding-left: 30px;
+  margin: 0;
 }
 
 .duurzaam-container {
