@@ -40,6 +40,10 @@ a {
   font-weight: bold;
 }
 
+.pointer{
+  cursor: pointer;
+}
+
 .nav .a{
   color: white;
   font-weight: normal;

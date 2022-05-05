@@ -1,4 +1,4 @@
-import { createContext, useCallback, useState } from "react";
+import { createContext, useCallback, useMemo, useState } from "react";
 
 import mock_data from '../data/mock_data.json'
 import axios from 'axios';
@@ -8,6 +8,7 @@ export const SearchContext = createContext()
 export const SearchProvider = ({children}) => {
 
     const [searchresult, setSearchresult] = useState({})
+    const [arrResults, setArrResults] = useState([]) 
     const [error, setError] = useState()
     const [loading, setLoading] = useState(false)
 
@@ -16,12 +17,16 @@ export const SearchProvider = ({children}) => {
             const url = 'http://localhost:9000/api/kmo/'
             setLoading(true)
             setError()
+
             const {data} = await axios.get(url + query)
 
-            if (data.Lenght === 0)
-                setSearchresult({empty: true})
-            else
+            if (data.kmo.length === 1)
                 setSearchresult(data.kmo[0])
+            else if(data.kmo.length === 0)
+                setSearchresult({})
+            else
+                setArrResults(data.kmo)
+            console.log(data.kmo)
         }
         catch(error){
             setError(error)
@@ -31,9 +36,18 @@ export const SearchProvider = ({children}) => {
         }
     }, [])
 
+    const setSingleKmo = useCallback((kmo) => {
+        setSearchresult(kmo)
+        setArrResults([kmo])
+    }, [])
+
+    const value =  useMemo(() => ({
+        searchKMO, setSingleKmo, searchresult, arrResults, error, loading
+    }), [searchKMO, setSingleKmo, searchresult, arrResults, error, loading])
+
 
     return (
-        <SearchContext.Provider value={{searchKMO, searchresult, error, loading}}>
+        <SearchContext.Provider value={value}>
             {children}
         </SearchContext.Provider>
     );

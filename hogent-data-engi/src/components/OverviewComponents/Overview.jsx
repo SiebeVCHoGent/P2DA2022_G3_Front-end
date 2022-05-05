@@ -6,10 +6,15 @@ import SearchBar from "./SearchBar";
 import Language from "../../files/images/language.png"
 import {AiFillSetting} from 'react-icons/ai'
 import Profile from "../../files/images/profile.jpg"
+import OpsommingZoeken from "./OpsommingZoeken";
+import { useContext } from "react";
+import { SearchContext } from "../../contexts/SearchProvider";
 
 
 
 export default function Overview() {
+    const { arrResults } = useContext(SearchContext)
+
     return <main>
         <div className="inside-main">
             <header>
@@ -29,8 +34,9 @@ export default function Overview() {
             <div className="main-container">
                 <div className="dashboard-info-container elements">
                     <SearchBar />
-                    <DefaultInfoCompany />
-                    <Duurzaamheidsscore className="element element2" />
+                    {
+                       (arrResults.length > 1 ? <><OpsommingZoeken /></> : (<><DefaultInfoCompany /> <Duurzaamheidsscore className="element element2" /></>))
+                    }
                 </div>
                 <CodingTree />
             </div>
