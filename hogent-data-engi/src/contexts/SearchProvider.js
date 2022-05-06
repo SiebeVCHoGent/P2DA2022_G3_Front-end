@@ -1,6 +1,6 @@
 import { createContext, useCallback, useMemo, useState } from "react";
 
-import axios from 'axios';
+import * as api from '../api/search';
 
 export const SearchContext = createContext()
 
@@ -14,11 +14,10 @@ export const SearchProvider = ({children}) => {
 
     const searchKMO = useCallback(async (query) => {
         try{
-            const url = 'http://localhost:9000/api/kmo/'
             setLoading(true)
             setError()
             
-            const {data} = await axios.get(url + query)
+            const data = await api.searchKmo(query)
             
             setArrResults([])
 
@@ -40,11 +39,11 @@ export const SearchProvider = ({children}) => {
 
     const getSectorInfo = useCallback(async (id) => {
         try{
-            const url = 'http://localhost:9000/api/sector/'
             setLoading(true)
             setError()
             
-            const {data} = await axios.get(url + id)
+            const data = await api.getSector(id)
+            
             if (data.sector === null)
                 setSectorData({id: parseInt(id), naam: 'Sector niet gevonden'})
             else
