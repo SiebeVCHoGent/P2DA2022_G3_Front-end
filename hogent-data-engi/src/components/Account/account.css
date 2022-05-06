@@ -69,3 +69,8 @@ form{
 .submit:hover{
     background-color: rgb(41, 41, 41);
 }
+
+.form-error{
+    font-size: 13px;
+    color: red;
+}
