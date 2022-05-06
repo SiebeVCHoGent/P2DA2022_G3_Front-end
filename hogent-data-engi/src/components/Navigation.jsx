@@ -27,7 +27,7 @@ export default function Navigation()
                 <div className="nav-sub">
                     <span className="nav-sub-title">APPLICATIONS</span>
                     <ul className="nav-sub-list">
-                        <li>Duurzaamheid bij kmo's</li>
+                        <li><Link to={'/'} className='a'>Duurzaamheid bij kmo's</Link></li>
                     </ul>
                 </div>
             </div>

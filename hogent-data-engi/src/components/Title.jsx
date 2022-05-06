@@ -1,6 +1,7 @@
 import Language from "../files/images/language.png"
 import {AiFillSetting} from 'react-icons/ai'
 import Profile from "../files/images/profile.jpg"
+import { Link } from "react-router-dom"
 
 export default function Title({children}){
     return <header>
@@ -13,7 +14,7 @@ export default function Title({children}){
                 <a href="#e"><AiFillSetting/></a>
             </div>
             <div className="cirkel-profile">
-                <img src={Profile} alt="profile" />
+                <Link to='/account/login'><img src={Profile} alt="profile" /></Link>
             </div>
         </section>
     </header>
