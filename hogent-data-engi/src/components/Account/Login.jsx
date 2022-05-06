@@ -1,12 +1,17 @@
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 import './account.css'
 
 
 export default function Login(){
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const { login } = useContext(AuthContext)
+
     const onSubmit = data => {
         console.log(data)
+        login(data)
     }
 
     return <main>

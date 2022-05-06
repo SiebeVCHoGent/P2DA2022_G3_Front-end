@@ -2,6 +2,8 @@ import { createContext, useCallback, useEffect, useMemo, useState } from "react"
 import * as usersApi from '../api/users'
 import * as api from '../api/index'
 import config from '../config.json'
+import { Buffer } from 'buffer'
+
 
 const JWT_TOKEN_KEY = config.token_key;
 export const AuthContext = createContext()
@@ -32,11 +34,11 @@ export const AuthProvider = ({
 		setReady(stillValid);
 	}, [])
 
-    const login = useCallback(async (username, password) => {
+    const login = useCallback(async ({email, ww}) => {
 		try {
 			setLoading(true);
 			setError('');
-			const { token, user } = await usersApi.login(username, password);
+			const { token, user } = await usersApi.login(email, ww);
 			setSession(token);
 			setUser(user);
 			return true;
@@ -54,11 +56,11 @@ export const AuthProvider = ({
 		setUser(null);
 	}, [setSession]);
 
-	const register = useCallback(async (username, email, password) => {
+	const register = useCallback(async (voornaam, achternaam, email, ww) => {
 		try {
 			setLoading(true);
 			setError('');
-			const { token, user } = await usersApi.register(username, email, password);
+			const { token, user } = await usersApi.register(voornaam, achternaam, email, ww);
 			setSession(token);
 			setUser(user);
 			return true;

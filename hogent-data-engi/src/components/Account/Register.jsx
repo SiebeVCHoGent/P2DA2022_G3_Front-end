@@ -1,14 +1,17 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 import './account.css'
 
 export default function Register(){
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => {
-        console.log(data)
-    }
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register: registerAcc } = useContext(AuthContext)
 
-    console.log(errors)
+    const onSubmit = async data => {
+        console.log(data)
+        await registerAcc({...data})
+    }
 
     return <main>
         <div className="inside-main">
