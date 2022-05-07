@@ -13,20 +13,18 @@ import Title from "../Title";
 export default function Overview() {
     const { arrResults } = useContext(SearchContext)
 
-    return <main>
-        <div className="inside-main">
-            <Title>Dashboard</Title>
-            <div className="main-container">
-                <div className="dashboard-info-container elements">
-                    <SearchBar />
-                    {
-                       (arrResults.length > 1 ? <><OpsommingZoeken /></> : (<><DefaultInfoCompany /> <Duurzaamheidsscore className="element element2" /></>))
-                    }
-                </div>
+    return <div className="inside-main">
+        <Title>Dashboard</Title>
+        <div className="main-container">
+            <div className="dashboard-info-container elements">
+                <SearchBar />
                 {
-                    (arrResults.length > 1 ? <></> : <><CodingTree /></>)
+                    (arrResults.length > 1 ? <><OpsommingZoeken /></> : (<><DefaultInfoCompany /> <Duurzaamheidsscore className="element element2" /></>))
                 }
             </div>
+            {
+                (arrResults.length > 1 ? <></> : <><CodingTree /></>)
+            }
         </div>
-    </main>
+    </div>
 }

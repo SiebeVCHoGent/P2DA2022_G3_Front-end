@@ -21,18 +21,20 @@ function App() {
           <AuthProvider>
             <Navigation></Navigation>
               <SearchProvider>
-                <Routes>
-                    <Route exact path='account' element={<PrivateRoute><Account /></PrivateRoute>}/>
-                    <Route exact path='/account/login' element={<Login/>} />
-                    <Route exact path='/account/register' element={<Register/>} />
-                    <Route exact path='/' element={<Uitleg/>}/>
-                    <Route exact path='/sectoren' element={<PrivateRoute><Sectoren /></PrivateRoute>}/>
-                    <Route exact path='/sectoren/:sectorid' element={<PrivateRoute><SectorenDetails /></PrivateRoute>}/>
-                    <Route exact path='dashboard' element={<PrivateRoute><Overview/></PrivateRoute>} />
-                    <Route exact path='/dashboard/:item' element={<PrivateRoute><CodingTreeItemOverview /></PrivateRoute>}/>
-                    <Route exact path='/404' element={<NotFound />}/> 
-                    <Route path='*' element={<Navigate to={'/404'} replace />} />
-                </Routes>
+                <main>
+                  <Routes>
+                      <Route exact path='account' element={<PrivateRoute><Account /></PrivateRoute>}/>
+                      <Route exact path='/account/login' element={<Login/>} />
+                      <Route exact path='/account/register' element={<Register/>} />
+                      <Route exact path='/' element={<Uitleg/>}/>
+                      <Route exact path='/sectoren' element={<PrivateRoute><Sectoren /></PrivateRoute>}/>
+                      <Route exact path='/sectoren/:sectorid' element={<PrivateRoute><SectorenDetails /></PrivateRoute>}/>
+                      <Route exact path='dashboard' element={<PrivateRoute><Overview/></PrivateRoute>} />
+                      <Route exact path='/dashboard/:item' element={<PrivateRoute><CodingTreeItemOverview /></PrivateRoute>}/>
+                      <Route exact path='/404' element={<NotFound />}/> 
+                      <Route path='*' element={<Navigate to={'/404'} replace />} />
+                  </Routes>
+                </main>
               </SearchProvider>
           </AuthProvider>
       </div>

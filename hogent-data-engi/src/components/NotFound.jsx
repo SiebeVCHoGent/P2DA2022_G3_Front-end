@@ -1,14 +1,12 @@
 import Title from "./Title";
 
 export default function NotFound() {
-    return <main>
-        <div className="inside-main outer-container-404">
-            <section className="container-404">
+    return <div className="inside-main outer-container-404">
+        <section className="container-404">
             <Title>Pagina Niet Gevonden</Title>
-                <span className="text-404">
-                    404
-                </span>
-            </section>
-        </div>
-    </main>
+            <span className="text-404">
+                404
+            </span>
+        </section>
+    </div>
 }
