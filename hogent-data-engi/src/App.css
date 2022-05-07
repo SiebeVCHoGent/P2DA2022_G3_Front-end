@@ -391,4 +391,21 @@ hr {
 
   text-align: center;
 }
+
+.btn{
+  max-width: max-content;
+  background-color: black;
+  border: none;
+  padding: 12px 12px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+
+  font-weight: bold;
+  color:white;
+}
+
+
+.btn:hover{
+  background-color: rgb(41, 41, 41);
+}
 /*# sourceMappingURL=App.css.map */

@@ -13,6 +13,7 @@ import SectorenDetails from './components/Sectoren/SectorenDetails';
 import Login from './components/Account/Login';
 import Register from './components/Account/Register';
 import Account from './components/Account/Account';
+import PrivateRoute from './components/PrivateRoute'
 
 function App() {
   return (
@@ -21,15 +22,15 @@ function App() {
             <Navigation></Navigation>
               <SearchProvider>
                 <Routes>
-                    <Route exact path='/' element={<Uitleg/>}/>
-                    <Route exact path='/sectoren' element={<Sectoren />}/>
-                    <Route exact path='/sectoren/:sectorid' element={<SectorenDetails />}/>
-                    <Route exact path='dashboard' element={<Overview/>} />
-                    <Route exact path='/dashboard/:item' element={<CodingTreeItemOverview />}/>
-                    <Route exact path='account' element={<Account />}/>
+                    <Route exact path='account' element={<PrivateRoute><Account /></PrivateRoute>}/>
                     <Route exact path='/account/login' element={<Login/>} />
                     <Route exact path='/account/register' element={<Register/>} />
-                    <Route path='/404' element={<NotFound />}/> 
+                    <Route exact path='/' element={<Uitleg/>}/>
+                    <Route exact path='/sectoren' element={<PrivateRoute><Sectoren /></PrivateRoute>}/>
+                    <Route exact path='/sectoren/:sectorid' element={<PrivateRoute><SectorenDetails /></PrivateRoute>}/>
+                    <Route exact path='dashboard' element={<PrivateRoute><Overview/></PrivateRoute>} />
+                    <Route exact path='/dashboard/:item' element={<PrivateRoute><CodingTreeItemOverview /></PrivateRoute>}/>
+                    <Route exact path='/404' element={<NotFound />}/> 
                     <Route path='*' element={<Navigate to={'/404'} replace />} />
                 </Routes>
               </SearchProvider>

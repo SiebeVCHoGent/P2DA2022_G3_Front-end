@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from "../../contexts/AuthProvider";
 import Title from "../Title";
 
@@ -16,7 +16,10 @@ export default function Account() {
         <div className="inside-main">
             <Title>Welkom bij HOGENT - Data Engineering Project</Title>
             Kies een applicatie om verder te gaan.
-            <p className="a" onClick={() => logoutHandler()}>Afmelden</p>
+            <ul>
+                <li><Link to='/'>Duurzaamheid bij kmo's</Link></li>
+            </ul>
+            <p className="btn" onClick={() => logoutHandler()}>Afmelden</p>
         </div>
     </main>
 }
