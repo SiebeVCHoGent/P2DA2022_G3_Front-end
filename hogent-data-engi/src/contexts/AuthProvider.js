@@ -44,7 +44,7 @@ export const AuthProvider = ({
 			return true;
 		} catch (error) {
 			console.error(error);
-			setError('Login failed, try again');
+			setError(error?.response?.data?.message);
 			return false;
 		} finally {
 			setLoading(false);

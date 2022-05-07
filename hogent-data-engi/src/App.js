@@ -12,6 +12,7 @@ import Sectoren from './components/Sectoren/Sectoren';
 import SectorenDetails from './components/Sectoren/SectorenDetails';
 import Login from './components/Account/Login';
 import Register from './components/Account/Register';
+import Account from './components/Account/Account';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
                     <Route exact path='/sectoren/:sectorid' element={<SectorenDetails />}/>
                     <Route exact path='dashboard' element={<Overview/>} />
                     <Route exact path='/dashboard/:item' element={<CodingTreeItemOverview />}/>
+                    <Route exact path='account' element={<Account />}/>
                     <Route exact path='/account/login' element={<Login/>} />
                     <Route exact path='/account/register' element={<Register/>} />
                     <Route path='/404' element={<NotFound />}/> 

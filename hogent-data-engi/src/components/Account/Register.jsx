@@ -1,23 +1,26 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+import Title from "../Title";
 import './account.css'
 
 export default function Register(){
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { register: registerAcc } = useContext(AuthContext)
+    const { register: registerAcc, error } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const onSubmit = async data => {
-        console.log(data)
-        await registerAcc({...data})
+        const succes = await registerAcc({...data})
+        if (succes)
+            navigate('/account')
     }
 
     return <main>
         <div className="inside-main">
             <div className='center'>
                 <div className='text-box'>
-                    <h1 className='form-title'>Registreren</h1>
+                    <Title>Registreren</Title>
                     <p className='form-text'>Welkom bij HOGENT - Data Engineering Project</p>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -53,6 +56,7 @@ export default function Register(){
                             {...register("ww", { required: "Gelieve een wachtwoord in te vullen" })}
                         />
                     </div>
+                    <span className="form-error">{error ? error : ''}</span>
                     <button type='sumbit' className='submit'>Registreer</button>
                     <p className="form-text">Heb je al een account? <Link to='/account/login'>Meld hier aan.</Link></p>
                 </form>

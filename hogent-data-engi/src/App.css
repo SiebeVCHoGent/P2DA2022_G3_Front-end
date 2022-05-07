@@ -169,7 +169,7 @@ header{
 
 .top-icons{
   max-width: 120px;
-  width: 120px;
+  padding-right: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -181,12 +181,12 @@ header{
   max-width: 30px;
 }
 
-.settings{
-  font-size: 35px;
+.nav-icons{
+  font-size: 30px;
   margin-top: 10px;
 }
 
-.settings a {
+.nav-icons a {
   color: black;
 }
 
