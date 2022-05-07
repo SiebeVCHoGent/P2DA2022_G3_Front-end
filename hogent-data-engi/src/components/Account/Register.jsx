@@ -6,8 +6,8 @@ import Title from "../Title";
 import './account.css'
 
 export default function Register() {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { register: registerAcc, error } = useContext(AuthContext)
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register: registerAcc, error, loading } = useContext(AuthContext)
     const navigate = useNavigate()
 
     const onSubmit = async data => {
@@ -22,7 +22,7 @@ export default function Register() {
                 <Title>Registreren</Title>
                 <p className='form-text'>Welkom bij HOGENT - Data Engineering Project</p>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className='form-login'>
                 <div className='input-item'>
                     <label>Voornaam*</label>
                     <span className="form-error">{errors?.voornaam?.message}</span>
@@ -56,7 +56,7 @@ export default function Register() {
                     />
                 </div>
                 <span className="form-error">{error ? error : ''}</span>
-                <button type='sumbit' className='submit'>Registreer</button>
+                <button type='sumbit' className='submit' disabled={loading}>Registreer</button>
                 <p className="form-text">Heb je al een account? <Link to='/account/login'>Meld hier aan.</Link></p>
             </form>
         </div>

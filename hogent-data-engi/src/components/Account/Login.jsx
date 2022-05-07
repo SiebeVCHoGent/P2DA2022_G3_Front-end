@@ -8,7 +8,7 @@ import './account.css'
 
 export default function Login() {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { login, error } = useContext(AuthContext)
+    const { login, error, loading } = useContext(AuthContext)
     const navigate = useNavigate()
 
     const onSubmit = async (data) => {
@@ -25,7 +25,7 @@ export default function Login() {
                 <Title>Aanmelden</Title>
                 <p className='form-text'>Welkom bij HOGENT - Data Engineering Project</p>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className="form-login">
                 <div className='input-item'>
                     <label>Email*</label>
                     <span className="form-error">{errors?.email?.message}</span>
@@ -42,7 +42,7 @@ export default function Login() {
                     />
                 </div>
                 <span className="form-error">{error ? error : ''}</span>
-                <button type='sumbit' className='submit'>Aanmelden</button>
+                <button type='sumbit' className='submit' disabled={loading}>Aanmelden</button>
                 <p className="form-text">Nog geen account? <Link to='/account/register'>Registreer hier.</Link></p>
             </form>
         </div>

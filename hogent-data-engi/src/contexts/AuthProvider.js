@@ -66,7 +66,7 @@ export const AuthProvider = ({
 			return true;
 		} catch (error) {
 			console.error(error);
-			setError('Login failed, try again');
+			setError('Probleem bij het registreren probeer het later opnieuw.');
 			return false;
 		} finally {
 			setLoading(false);

@@ -12,7 +12,7 @@ export default function SearchBar() {
         searchKMO(data.query)
     }
 
-    return <div>
+    return <div className='search-div'>
         <form onSubmit={handleSubmit(onSubmit)}>
             <span className="search-container">
                 <input 
