@@ -36,6 +36,10 @@
     color: black
 }
 
+.black{
+    border-color: black;
+}
+
 .tree-root{
     grid-column-start: 1;
     grid-row-start: 8;

@@ -41,7 +41,7 @@ export default function DefaultInfoCompany(){
                     <td>
                         {
                             sr?.website
-                            ? <a href={sr?.website ? 'https://' + sr.website : '#'} target='_blank' rel="noreferrer">{sr?.website ? sr.website : '/'}</a>
+                            ? <a href={sr?.website ? 'https://' + sr.website : '#'} target='_blank' rel="noreferrer">{sr?.website ? 'TODO: BEPALEN BESTE LINK' : '/'}</a>
                             : '/'
                         }
                         
@@ -51,8 +51,8 @@ export default function DefaultInfoCompany(){
                     <th>Jaarverslag</th>
                     <td>
                         {
-                            sr?.jaarverslag?.link 
-                            ? <a href={sr.jaarverslag.link} target='_blank' rel="noreferrer">staatsbladmonitor</a>
+                            sr?.link 
+                            ? <a href={sr.link} target='_blank' rel="noreferrer">Bekijk Jaarverslag</a>
                             : '/'  
                         }
                     </td>
@@ -65,11 +65,11 @@ export default function DefaultInfoCompany(){
             <tbody>
                 <tr>
                     <th>Omzetcijfer</th>
-                    <td>{sr?.jaarverslag?.omzetcijfer ? '€ ' +sr.jaarverslag.omzetcijfer : '/'}</td>
+                    <td>{sr?.omzetcijfer ? '€ ' + sr.omzetcijfer : '/'}</td>
                 </tr>
                 <tr>
                     <th>Balanstotaal</th>
-                    <td>{sr?.jaarverslag?.balanstotaal ? '€ ' +sr.jaarverslag.balanstotaal : '/'}</td>
+                    <td>{sr?.balanstotaal ? '€ ' + sr.balanstotaal : '/'}</td>
                 </tr>
                 <tr>
                     <th>Framework voor duurzaamheidsrapportering</th>
@@ -88,7 +88,11 @@ export default function DefaultInfoCompany(){
                     <td>{(sr?.isB2B === undefined || sr?.isB2B === null ? '/' : (Boolean(sr?.isB2B) ? 'B2B' : 'B2C'))}</td>
                 </tr>
                 <tr>
-                    <th>Sector</th>
+                    <th>Hoofdsector</th>
+                    <td>{sr?.hoofdsector ? <Link to={`/sectoren/${sr.hoofdsectorid}`}>{sr.hoofdsector}</Link> : '/'}</td>
+                </tr>
+                <tr>
+                    <th>Subsector</th>
                     <td>{sr?.sector ? <Link to={`/sectoren/${sr.sectorid}`}>{sr.sector}</Link> : '/'}</td>
                 </tr>
             </tbody>
