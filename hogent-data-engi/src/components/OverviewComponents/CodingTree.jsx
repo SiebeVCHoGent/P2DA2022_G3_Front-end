@@ -62,11 +62,28 @@ export default function CodingTree() {
                 if (!al_ok.has(item)) {
                   const node = document?.querySelector('#' + item)
                   node?.classList.remove('green')
+                  node?.setAttribute('data-for', item + '_t')
+
+                  const spannode = document.querySelector('#' + item + '_t')?.querySelector('span')
+                  if (spannode)
+                    spannode.innerHTML = 'Niet Gevonden'
                 }
               }
             }
           }
         }
+      }
+    }
+    else {
+      // Delete green when there is no tree
+      for (const item of tree_connections) {
+        const node = document?.querySelector('#' + item[1])
+        node?.classList.remove('green')
+        node?.setAttribute('data-for', item[1] + '_t')
+
+        const spannode = document.querySelector('#' + item[1] + '_t')?.querySelector('span')
+        if (spannode)
+          spannode.innerHTML = 'Niet Gevonden'
       }
     }
   }, [sr])

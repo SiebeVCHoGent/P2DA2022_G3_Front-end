@@ -46,7 +46,7 @@ export const SearchProvider = ({children}) => {
             setError()
             
             const data = await api.getSector(id)
-            
+
             if (data.sector === null)
                 setSectorData({id: parseInt(id), naam: 'Sector niet gevonden'})
             else

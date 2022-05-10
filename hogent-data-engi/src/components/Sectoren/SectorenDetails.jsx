@@ -6,12 +6,13 @@ import Title from "../Title"
 export default function SectorenDetails() {
     const { sectorid } = useParams()
     const { sectorData, getSectorInfo } = useContext(SearchContext)
+    
 
     useEffect(() => {
         if (!sectorData || parseInt(sectorid) !== sectorData.id) {
             getSectorInfo(sectorid)
         }
-    }, [sectorData, getSectorInfo, sectorid])
+    }, [getSectorInfo, sectorid, sectorData])
 
 
     if (sectorData && parseInt(sectorid) === sectorData.id)
@@ -19,7 +20,7 @@ export default function SectorenDetails() {
             <Title>{sectorData.naam}</Title>
         </div>
     else if (sectorData === null)
-        return <Navigate to="/" replace />
+        return <Navigate to="/404" replace />
     else
         return <></>
 }

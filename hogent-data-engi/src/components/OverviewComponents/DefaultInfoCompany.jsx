@@ -52,7 +52,7 @@ export default function DefaultInfoCompany(){
                     <td>
                         {
                             sr?.link 
-                            ? <a href={sr.link} target='_blank' rel="noreferrer">Bekijk Jaarverslag</a>
+                            ? <a href={sr.link} target='_blank' rel="noreferrer">Download Jaarverslag</a>
                             : '/'  
                         }
                     </td>
