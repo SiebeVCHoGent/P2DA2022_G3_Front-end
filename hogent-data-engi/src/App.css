@@ -411,4 +411,18 @@ hr {
 .btn:hover{
   background-color: rgb(41, 41, 41);
 }
+
+.capitalize{
+  text-transform: capitalize;
+}
+
+.zoektermen-container{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.zoektermen-container ul{
+  list-style: none;
+  padding: 0;
+}
 /*# sourceMappingURL=App.css.map */
