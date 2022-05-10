@@ -44,8 +44,8 @@ export default function CodingTreeItemOverview() {
 
 
     return <div className="inside-main">
-        <Title className='capitalize'>Overzicht Zoektermen van {itemP.replace('_', ' ')}</Title>
-        <div cl>
+        <Title><span className='capitalize'>Overzicht Zoektermen van {itemP.replace('_', ' ')}</span></Title>
+        <div>
             <h3>Meest voorkomende zoektermen</h3>
             <hr />
             <div className="zoektermen-container">
@@ -53,9 +53,11 @@ export default function CodingTreeItemOverview() {
                     <h4>Totaal</h4>
                     <ul>
                         {
+                            Object.keys(zoektermen).length > 0 ?
                             Object.keys(zoektermen).map(key => {
-                                return <li>{zoektermen[key] + ' - ' + key}</li>
+                                return <li key={key}>{zoektermen[key] + ' - ' + key}</li>
                             })
+                            : 'Geen zoektermen gevonden'
                         }
                     </ul>
                 </div>
@@ -63,9 +65,11 @@ export default function CodingTreeItemOverview() {
                     <h4>Jaarverslag</h4>
                     <ul>
                         {
+                            Object.keys(zoektermenPdf).length > 0 ?
                             Object.keys(zoektermenPdf).map(key => {
-                                return <li>{zoektermenPdf[key] + ' - ' + key}</li>
+                                return <li key={key}>{zoektermenPdf[key] + ' - ' + key}</li>
                             })
+                            : 'Geen jaarverslag gevonden'
                         }
                     </ul>
                 </div>
@@ -73,9 +77,11 @@ export default function CodingTreeItemOverview() {
                     <h4>Website</h4>
                     <ul>
                         {
+                            Object.keys(zoektermenWebsite).length > 0 ?
                             Object.keys(zoektermenWebsite).map(key => {
-                                return <li>{zoektermenWebsite[key] + ' - ' + key}</li>
+                                return <li key={key}>{zoektermenWebsite[key] + ' - ' + key}</li>
                             })
+                            : 'Geen website gevonden'
                         }
                     </ul>
                 </div>

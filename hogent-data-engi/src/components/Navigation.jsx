@@ -8,7 +8,7 @@ export default function Navigation()
 
     return (
     <nav>
-        <div  class='nav' hidden={navHidden}>
+        <div  className='nav' hidden={navHidden}>
             <div className="title">
                 HOGENT
                 <HiOutlineMenuAlt2 className='nav-icon' onClick={() => setNavHidden(!navHidden)}/>
@@ -32,7 +32,7 @@ export default function Navigation()
                 </div>
             </div>
         </div>
-        <div class='nav-collapsed' hidden={!navHidden}>
+        <div className='nav-collapsed' hidden={!navHidden}>
             <HiOutlineMenuAlt2 className='nav-icon-collapsed' onClick={() => setNavHidden(!navHidden)}/>
         </div>
     </nav>

@@ -418,7 +418,12 @@ hr {
 
 .zoektermen-container{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.zoektermen-subcontainer{
+  margin-right: 20px;
 }
 
 .zoektermen-container ul{
