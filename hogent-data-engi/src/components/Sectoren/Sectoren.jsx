@@ -12,11 +12,10 @@ export default function Sectoren() {
     useEffect(() => {
         if (!bestSectors) {
             getBestSectors()
-            
         }
         else
         {
-            setFiltered(bestSectors)
+            setFiltered(bestSectors.map((v, i) => {v['place'] = i + 1; return v}))
         }
     }, [bestSectors, getBestSectors])
 
@@ -24,7 +23,7 @@ export default function Sectoren() {
         if (bestSectors)
         {
             const f = event?.target?.value
-            setFiltered(bestSectors.map((v, i) => {v['place'] = i + 1; return v}).filter((v) => {return v.naam.includes(f) || (v.sectorId+'').includes(f)}))
+            setFiltered(bestSectors.filter((v) => {return v.naam.includes(f) || (v.sectorId+'').includes(f)}))
         }
     }
 
