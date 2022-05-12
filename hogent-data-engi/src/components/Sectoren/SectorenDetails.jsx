@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react"
 import { Navigate, useParams, useNavigate } from "react-router-dom"
 import { SearchContext } from "../../contexts/SearchProvider"
 import Title from "../Title"
+import ReactLoading from 'react-loading'
 
 export default function SectorenDetails() {
     const { sectorid } = useParams()
@@ -22,37 +23,40 @@ export default function SectorenDetails() {
     }
 
     if (sectorData?.notFound)
-        return <Navigate to={'/404'} replace/>
+        return <Navigate to={'/404'} replace />
 
     if (!loading && sectorData && parseInt(sectorid) === sectorData.id)
         return <div className="inside-main">
             <Title>{sectorData.naam}</Title>
             {
                 bestKmosSector.length > 0 ? <>
-            <h3>Beste kmo's in '{sectorData.naam}'</h3>
-            <hr />
-            <div className="center-table">
-                <table border='1' className="table-top">
-                    <thead>
-                        <tr>
-                            <th>N°</th>
-                            <th>KMO</th>
-                            <th>Score</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            bestKmosSector.map((o, i) => {
-                                return <tr onClick={() => { kmoDetails(o) }} key={o.ondernemingsnummer}>
-                                    <td>{i + 1}</td>
-                                    <td>{o.ondernemingsnummer} - {o.naam} - {o.gemeente}</td>
-                                    <td>{o.Score}</td>
+                    <h3>Beste kmo's in '{sectorData.naam}'</h3>
+                    <hr />
+                    <div className="center-table">
+                        <table border='1' className="table-top">
+                            <thead>
+                                <tr>
+                                    <th>N°</th>
+                                    <th>KMO</th>
+                                    <th>Score</th>
                                 </tr>
-                            })
-                        }
-                    </tbody>
-                </table>
-            </div></> : ''
+                            </thead>
+                            <tbody>
+                                {
+                                    bestKmosSector.map((o, i) => {
+                                        return <tr onClick={() => { kmoDetails(o) }} key={o.ondernemingsnummer}>
+                                            <td>{i + 1}</td>
+                                            <td>{o.ondernemingsnummer} - {o.naam} - {o.gemeente}</td>
+                                            <td>{o.Score}</td>
+                                        </tr>
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div></> : ''
+            }
+            {
+                loading ? <ReactLoading type="bars" color="#000"/> : <></>
             }
         </div>
     else

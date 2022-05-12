@@ -3,9 +3,10 @@ import { ImSearch } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../contexts/SearchProvider";
 import Title from "../Title";
+import ReactLoading from 'react-loading'
 
 export default function Sectoren() {
-    const { getBestSectors, bestSectors } = useContext(SearchContext)
+    const { getBestSectors, bestSectors, loading } = useContext(SearchContext)
     const navigate = useNavigate()
     const [filtered, setFiltered] = useState()
 
@@ -54,7 +55,7 @@ export default function Sectoren() {
                 <tbody>
                     {
                         filtered ?
-                            filtered.map((s, i) => {
+                            filtered.map((s) => {
                                 return <tr key={s.sectorId} onClick={() => {navigate(`/sectoren/${s.sectorId}`) }}>
                                     <td>{s.place}</td>
                                     <td>{s.naam}</td>
@@ -65,6 +66,9 @@ export default function Sectoren() {
                     }
                 </tbody>
             </table>
+            {
+                loading ? <ReactLoading type="bars" color="#000"/> : <></>
+            }
         </div>
     </div>
 }
