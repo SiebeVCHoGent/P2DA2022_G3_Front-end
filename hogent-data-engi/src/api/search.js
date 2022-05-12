@@ -14,3 +14,8 @@ export const getBestKmosSector = async (sectorId) => {
     const {data} = await axios.get(`/sector/best/${sectorId}`)
     return data
 }
+
+export const getBestSectors = async () => {
+    const { data } = await axios.get(`/sector/best`)
+    return data
+}

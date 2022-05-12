@@ -6,7 +6,7 @@ import Title from "../Title"
 export default function SectorenDetails() {
     const { sectorid } = useParams()
     const navigate = useNavigate()
-    const { sectorData, getSectorInfo, getBestKmosSector, bestKmosSector, setSingleKmo } = useContext(SearchContext)
+    const { loading, sectorData, getSectorInfo, getBestKmosSector, bestKmosSector, setSingleKmo } = useContext(SearchContext)
 
 
     useEffect(() => {
@@ -21,11 +21,14 @@ export default function SectorenDetails() {
         navigate('/dashboard')
     }
 
+    if (sectorData?.notFound)
+        return <Navigate to={'/404'} replace/>
 
-    if (sectorData && parseInt(sectorid) === sectorData.id)
+    if (!loading && sectorData && parseInt(sectorid) === sectorData.id)
         return <div className="inside-main">
             <Title>{sectorData.naam}</Title>
-
+            {
+                bestKmosSector.length > 0 ? <>
             <h3>Beste kmo's in '{sectorData.naam}'</h3>
             <hr />
             <div className="center-table">
@@ -49,10 +52,9 @@ export default function SectorenDetails() {
                         }
                     </tbody>
                 </table>
-            </div>
+            </div></> : ''
+            }
         </div>
-    else if (sectorData === null)
-        return <Navigate to="/404" replace />
     else
         return <></>
 }
