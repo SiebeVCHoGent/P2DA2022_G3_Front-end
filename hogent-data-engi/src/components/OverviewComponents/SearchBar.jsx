@@ -17,7 +17,7 @@ export default function SearchBar() {
             <span className="search-container">
                 <input 
                     className="search-in" 
-                    placeholder="Zoek op bedrijfsnaam of sector..."
+                    placeholder="Zoek op bedrijfsnaam..."
                     {...register('query', {required:true})}
                 ></input>
                 <span className="search-glass" onClick={handleSubmit(onSubmit)}><ImSearch/></span>

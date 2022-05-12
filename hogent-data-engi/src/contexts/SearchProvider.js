@@ -96,7 +96,7 @@ export const SearchProvider = ({children}) => {
                 
                 const data = await api.getBestSectors()
                 console.log(data)
-                setBestSectors(data)
+                setBestSectors(data.sector)
             }
             catch(error){
                 setError(error)
