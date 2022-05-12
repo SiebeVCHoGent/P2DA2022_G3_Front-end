@@ -48,13 +48,14 @@ export default function CodingTree() {
                   node?.classList.add('green')
                   node?.setAttribute('data-for', item + '_t')
 
-                  const spannode = document.querySelector('#' + item + '_t').querySelector('span')
-                  spannode.innerHTML = 'Gevonden ' + (location === 'pdf' ? 'in het jaarverslag' : 'op de website')
+                  const spannode = document.querySelector('#' + item + '_t')?.querySelector('span')
+                  if (spannode)
+                    spannode.innerHTML = 'Gevonden ' + (location === 'pdf' ? 'in het jaarverslag' : 'op de website')
                 }
                 else {
                   const spannode = document?.querySelector('#' + item + '_t')?.querySelector('span')
 
-                  if (!spannode.innerHTML.includes((location === 'pdf' ? 'jaarverslag' : 'website')))
+                  if (spannode && !spannode.innerHTML.includes((location === 'pdf' ? 'jaarverslag' : 'website')))
                     spannode.innerHTML = spannode.innerHTML + '<br/> Gevonden ' + (location === 'pdf' ? 'in het jaarverslag' : 'op de website')
                 }
               }

@@ -6,7 +6,7 @@ export default function Duurzaamheidsscore()
     const {searchresult: sr} = useContext(SearchContext)
 
     return <div>
-        <h2>Duurzaamheidsscore</h2>
+        <h2>Duurzaamheidsscore{sr?.Score ? ': ' + sr.Score + ' punten' : ''}</h2>
         <div className="duurzaam-container">
             <div className="big-letters">
                 <p className="big-letter duurzaam-letter">{sr?.duurzaamheidsscore ? sr.duurzaamheidsscore : '-'}</p>

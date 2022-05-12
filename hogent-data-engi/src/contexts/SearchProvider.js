@@ -9,6 +9,7 @@ export const SearchProvider = ({children}) => {
     const [searchresult, setSearchresult] = useState({})
     const [arrResults, setArrResults] = useState([]) 
     const [sectorData, setSectorData] = useState()
+    const [bestKmosSector, setBestKmosSector] = useState([])
     const [error, setError] = useState()
     const [loading, setLoading] = useState(false)
 
@@ -65,9 +66,27 @@ export const SearchProvider = ({children}) => {
         setArrResults([kmo])
     }, [])
 
+
+    const getBestKmosSector = useCallback(async (sectorid) => {
+        try{
+            setLoading(true)
+            setError()
+            
+            const data = await api.getBestKmosSector(sectorid)
+            console.log(data)
+            setBestKmosSector(data.kmos)
+        }
+        catch(error){
+            setError(error)
+        }
+        finally{
+            setLoading(false)
+        }
+    }, [])
+
     const value =  useMemo(() => ({
-        searchKMO, setSingleKmo, getSectorInfo , searchresult, arrResults, error, loading, sectorData
-    }), [searchKMO, setSingleKmo, getSectorInfo , searchresult, arrResults, error, loading, sectorData])
+        searchKMO, setSingleKmo, getSectorInfo, getBestKmosSector, searchresult, arrResults, error, loading, sectorData, bestKmosSector
+    }), [searchKMO, setSingleKmo, getSectorInfo, getBestKmosSector, searchresult, arrResults, error, loading, sectorData, bestKmosSector])
 
 
     return (

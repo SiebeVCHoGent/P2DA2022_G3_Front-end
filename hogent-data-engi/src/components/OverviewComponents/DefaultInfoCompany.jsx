@@ -65,7 +65,7 @@ export default function DefaultInfoCompany(){
             <tbody>
                 <tr>
                     <th>Omzetcijfer</th>
-                    <td>{sr?.omzetcijfer ? '€ ' + sr.omzetcijfer : '/'}</td>
+                    <td>{sr?.omzetcijfer && sr?.omzetcijfer !== '-1' ? '€ ' + sr.omzetcijfer : '/'}</td>
                 </tr>
                 <tr>
                     <th>Balanstotaal</th>

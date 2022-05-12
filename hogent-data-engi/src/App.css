@@ -431,4 +431,37 @@ hr {
   list-style: none;
   padding: 0;
 }
+
+.center-table{
+  display: flex;
+  justify-content: center;
+}
+
+.table-top{
+  border-spacing: 0px;
+  flex: 1 1 auto;
+  max-width: 1000px;
+}
+
+.table-top thead{
+  background-color: black;
+  color: white;
+}
+
+.table-top tbody tr{
+  cursor: pointer;
+}
+
+.table-top th, .table-top td{
+  padding: 10px;
+}
+
+.table-top td td:nth-of-type(2){
+  padding-left: 10px 5px;
+}
+
+.table-top tr td:first-of-type, .table-top tr td:last-of-type{
+  text-align: center;
+  font-weight: bold;
+}
 /*# sourceMappingURL=App.css.map */
