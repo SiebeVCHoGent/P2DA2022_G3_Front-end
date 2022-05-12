@@ -40,9 +40,9 @@ export default function SectorenDetails() {
                     <tbody>
                         {
                             bestKmosSector.map((o, i) => {
-                                return <tr onClick={() => { kmoDetails(o) }}>
+                                return <tr onClick={() => { kmoDetails(o) }} key={o.ondernemingsnummer}>
                                     <td>{i + 1}</td>
-                                    <td>{o.ondernemingsnummer} - {o.naam}</td>
+                                    <td>{o.ondernemingsnummer} - {o.naam} - {o.gemeente}</td>
                                     <td>{o.Score}</td>
                                 </tr>
                             })
