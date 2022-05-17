@@ -6,9 +6,10 @@ import Title from "../Title";
 import ReactLoading from 'react-loading'
 
 export default function Sectoren() {
-    const { getBestSectors, bestSectors, loading } = useContext(SearchContext)
+    const { getBestSectors, bestSectors, bestSectorsHS, getBestHoofdSectors,  loading } = useContext(SearchContext)
     const navigate = useNavigate()
     const [filtered, setFiltered] = useState()
+    const [filteredHS, setFilteredHS] = useState()
 
     useEffect(() => {
         if (!bestSectors) {
@@ -18,7 +19,12 @@ export default function Sectoren() {
         {
             setFiltered(bestSectors.map((v, i) => {v['place'] = i + 1; return v}))
         }
-    }, [bestSectors, getBestSectors])
+        
+        if (!bestSectorsHS) {
+            getBestHoofdSectors()
+        }
+
+    }, [bestSectors, getBestSectors, bestSectorsHS, getBestHoofdSectors])
 
     const filter = (event) => {
         if (bestSectors)
@@ -30,9 +36,8 @@ export default function Sectoren() {
 
     return <div className="inside-main">
         <Title>Sectoren</Title>
-        <h3>Welke sectoren presteren het beste?</h3>
-        <hr />
-
+        <h3>Welke hoofdsectoren presteren het best?</h3>
+        <hr></hr>
         <div className="center-table">
             <div className="search-container-sector">
                 <span className="search-container">
@@ -44,6 +49,37 @@ export default function Sectoren() {
                     <span className="search-glass" ><ImSearch /></span>
                 </span>
             </div>
+            <table className="table-top" border='1'>
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Sector</th>
+                        <th>Gemiddelde Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        bestSectorsHS ?
+                        bestSectorsHS.map((s, i) => {
+                                return <tr key={s.id} onClick={() => {navigate(`/hoofdsectoren/${s.id}`) }}>
+                                    <td>{i+1}</td>
+                                    <td>{s.naam}</td>
+                                    <td>{Math.round((s.average) * 100) / 100}</td>
+                                </tr>
+                            })
+                            : <></>
+                    }
+                </tbody>
+            </table>
+            {
+                loading ? <ReactLoading type="bars" color="#000"/> : <></>
+            }
+        </div>
+
+        <h3>Welke sectoren presteren het beste?</h3>
+        <hr />
+
+        <div className="center-table">
             <table className="table-top" border='1'>
                 <thead>
                     <tr>

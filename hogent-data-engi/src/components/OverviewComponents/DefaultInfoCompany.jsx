@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { SearchContext } from "../../contexts/SearchProvider";
+import ReactTooltip from 'react-tooltip';
+
 
 export default function DefaultInfoCompany(){
     const { searchresult: sr } = useContext(SearchContext)
@@ -41,7 +43,8 @@ export default function DefaultInfoCompany(){
                     <td>
                         {
                             sr?.website
-                            ? <a href={sr?.website ? 'https://' + sr.website : '#'} target='_blank' rel="noreferrer">{sr?.website ? 'TODO: BEPALEN BESTE LINK' : '/'}</a>
+                            ? 
+                            sr.website.split(',').map((o, i) => <span key={i}><a href={o} target='_blank' rel="noreferrer" data-tip={o}>[{i +1}] </a><ReactTooltip/></span>)
                             : '/'
                         }
                         
@@ -89,7 +92,7 @@ export default function DefaultInfoCompany(){
                 </tr>
                 <tr>
                     <th>Hoofdsector</th>
-                    <td>{sr?.hoofdsector ? <Link to={`/sectoren/${sr.hoofdsectorid}`}>{sr.hoofdsector}</Link> : '/'}</td>
+                    <td>{sr?.hoofdsector ? <Link to={`/hoofdsectoren/${sr.hoofdsectorId}`}>{sr.hoofdsector}</Link> : '/'}</td>
                 </tr>
                 <tr>
                     <th>Subsector</th>

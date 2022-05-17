@@ -25,6 +25,7 @@ export const SearchProvider = ({
     const [sectorData, setSectorData] = useState()
     const [bestKmosSector, setBestKmosSector] = useState([])
     const [bestSectors, setBestSectors] = useState()
+    const [bestSectorsHS, setBestSectorsHS] = useState()
     const [error, setError] = useState()
     const [loading, setLoading] = useState(false)
 
@@ -76,6 +77,31 @@ export const SearchProvider = ({
         }
     }, [ready])
 
+    const getHoofdSectorInfo = useCallback(async (id) => {
+        if (ready) {
+            try {
+                setLoading(true)
+                setError()
+
+                const data = await api.getHoofdSector(id)
+                console.log(data)
+                if (data.hoofdsector === null)
+                    setSectorData({
+                        id: parseInt(id),
+                        naam: 'Sector niet gevonden',
+                        notFound: true
+                    })
+                else
+                    setSectorData(data.hoofdsector)
+
+            } catch (error) {
+                setError(error)
+            } finally {
+                setLoading(false)
+            }
+        }
+    }, [ready])
+
     const setSingleKmo = useCallback((kmo) => {
         setSearchresult(kmo)
         setArrResults([kmo])
@@ -89,6 +115,23 @@ export const SearchProvider = ({
                 setError()
 
                 const data = await api.getBestKmosSector(sectorid)
+
+                setBestKmosSector(data.kmos)
+            } catch (error) {
+                setError(error)
+            } finally {
+                setLoading(false)
+            }
+        }
+    }, [ready])
+
+    const getBestKmosHoofdSector = useCallback(async (sectorid) => {
+        if (ready) {
+            try {
+                setLoading(true)
+                setError()
+
+                const data = await api.getBestKmosHoofdSector(sectorid)
                 console.log(data)
                 setBestKmosSector(data.kmos)
             } catch (error) {
@@ -116,12 +159,33 @@ export const SearchProvider = ({
         }
     }, [ready])
 
+    const getBestHoofdSectors = useCallback(async () => {
+        if (ready) {
+            try {
+                setLoading(true)
+                setError()
+
+                const data = await api.getBestHoofdSectors()
+                console.log(data)
+                setBestSectorsHS(data.hoofdsector)
+            } catch (error) {
+                setError(error)
+            } finally {
+                setLoading(false)
+            }
+        }
+    }, [ready])
+
     const value = useMemo(() => ({
         searchKMO,
         setSingleKmo,
         getSectorInfo,
+        getHoofdSectorInfo,
         getBestKmosSector,
         getBestSectors,
+        getBestHoofdSectors,
+        getBestKmosHoofdSector,
+        bestSectorsHS,
         searchresult,
         arrResults,
         error,
@@ -129,15 +193,13 @@ export const SearchProvider = ({
         sectorData,
         bestKmosSector,
         bestSectors
-    }), [searchKMO, setSingleKmo, getSectorInfo, getBestKmosSector, getBestSectors, searchresult, arrResults, error, loading, sectorData, bestKmosSector, bestSectors])
+    }), [searchKMO, setSingleKmo, getSectorInfo, getHoofdSectorInfo, getBestKmosSector, getBestSectors, getBestHoofdSectors,  getBestKmosHoofdSector, bestSectorsHS, searchresult, arrResults, error, loading, sectorData, bestKmosSector, bestSectors])
 
 
-    return ( <
-        SearchContext.Provider value = {
+    return ( <SearchContext.Provider value = {
             value
         } > {
             children
-        } <
-        /SearchContext.Provider>
+        } </SearchContext.Provider>
     );
 }

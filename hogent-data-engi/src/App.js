@@ -14,6 +14,7 @@ import Login from './components/Account/Login';
 import Register from './components/Account/Register';
 import Account from './components/Account/Account';
 import PrivateRoute from './components/PrivateRoute'
+import HoofdsectorDetails from './components/Sectoren/HoofdsectorDetails';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                       <Route exact path='/' element={<Uitleg/>}/>
                       <Route exact path='/sectoren' element={<PrivateRoute><Sectoren /></PrivateRoute>}/>
                       <Route exact path='/sectoren/:sectorid' element={<PrivateRoute><SectorenDetails /></PrivateRoute>}/>
+                      <Route exact path='/hoofdsectoren/:sectorid' element={<PrivateRoute><HoofdsectorDetails /></PrivateRoute>}/>
                       <Route exact path='dashboard' element={<PrivateRoute><Overview/></PrivateRoute>} />
                       <Route exact path='/dashboard/:item' element={<PrivateRoute><CodingTreeItemOverview /></PrivateRoute>}/>
                       <Route exact path='/404' element={<NotFound />}/> 
