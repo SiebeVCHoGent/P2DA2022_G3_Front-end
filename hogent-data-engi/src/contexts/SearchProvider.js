@@ -149,7 +149,6 @@ export const SearchProvider = ({
                 setError()
 
                 const data = await api.getBestSectors()
-                console.log(data)
                 setBestSectors(data.sector)
             } catch (error) {
                 setError(error)
@@ -166,7 +165,6 @@ export const SearchProvider = ({
                 setError()
 
                 const data = await api.getBestHoofdSectors()
-                console.log(data)
                 setBestSectorsHS(data.hoofdsector)
             } catch (error) {
                 setError(error)

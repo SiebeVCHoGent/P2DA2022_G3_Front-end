@@ -9,7 +9,6 @@ export default function Sectoren() {
     const { getBestSectors, bestSectors, bestSectorsHS, getBestHoofdSectors,  loading } = useContext(SearchContext)
     const navigate = useNavigate()
     const [filtered, setFiltered] = useState()
-    const [filteredHS, setFilteredHS] = useState()
 
     useEffect(() => {
         if (!bestSectors) {
@@ -39,16 +38,6 @@ export default function Sectoren() {
         <h3>Welke hoofdsectoren presteren het best?</h3>
         <hr></hr>
         <div className="center-table">
-            <div className="search-container-sector">
-                <span className="search-container">
-                    <input
-                        className="search-in"
-                        placeholder="Zoek op sector..."
-                        onChange={filter}
-                    ></input>
-                    <span className="search-glass" ><ImSearch /></span>
-                </span>
-            </div>
             <table className="table-top" border='1'>
                 <thead>
                     <tr>
@@ -75,11 +64,21 @@ export default function Sectoren() {
                 loading ? <ReactLoading type="bars" color="#000"/> : <></>
             }
         </div>
-
+        <br/>
         <h3>Welke sectoren presteren het beste?</h3>
         <hr />
 
         <div className="center-table">
+        <div className="search-container-sector">
+                <span className="search-container">
+                    <input
+                        className="search-in"
+                        placeholder="Zoek op sector..."
+                        onChange={filter}
+                    ></input>
+                    <span className="search-glass" ><ImSearch /></span>
+                </span>
+            </div>
             <table className="table-top" border='1'>
                 <thead>
                     <tr>
