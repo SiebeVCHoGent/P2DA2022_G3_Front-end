@@ -29,7 +29,7 @@ export default function Sectoren() {
         if (bestSectors)
         {
             const f = event?.target?.value
-            setFiltered(bestSectors.filter((v) => {return v.naam.includes(f) || (v.sectorId+'').includes(f)}))
+            setFiltered(bestSectors.filter((v) => {return v.naam.includes(f) || (v.sectorId+'').includes(f) || v.hoofdsectornaam === f}))
         }
     }
 
@@ -73,7 +73,7 @@ export default function Sectoren() {
                 <span className="search-container">
                     <input
                         className="search-in"
-                        placeholder="Zoek op sector..."
+                        placeholder="Zoek op nummer, sectornaam of hoofdsecctornaam..."
                         onChange={filter}
                     ></input>
                     <span className="search-glass" ><ImSearch /></span>

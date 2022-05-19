@@ -45,8 +45,8 @@ export const SearchProvider = ({
                 setError(`"${query}" leverde geen resultaten op.`)
             } else
                 setArrResults(data.kmo)
-            console.log(data.kmo)
-        } catch (error) {
+
+            } catch (error) {
             setError(error)
         } finally {
             setLoading(false)
@@ -84,7 +84,7 @@ export const SearchProvider = ({
                 setError()
 
                 const data = await api.getHoofdSector(id)
-                console.log(data)
+
                 if (data.hoofdsector === null)
                     setSectorData({
                         id: parseInt(id),
@@ -132,7 +132,7 @@ export const SearchProvider = ({
                 setError()
 
                 const data = await api.getBestKmosHoofdSector(sectorid)
-                console.log(data)
+
                 setBestKmosSector(data.kmos)
             } catch (error) {
                 setError(error)

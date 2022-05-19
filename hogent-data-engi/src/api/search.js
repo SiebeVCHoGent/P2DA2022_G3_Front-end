@@ -12,7 +12,6 @@ export const getSector = async (sectorId) => {
 
 export const getHoofdSector = async (sectorId) => {
     const { data } = await axios.get(`/hoofdsector/${sectorId}`)
-    console.log(data)
     return data
 }
 
