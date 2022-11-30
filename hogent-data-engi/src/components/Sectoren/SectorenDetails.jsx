@@ -9,9 +9,9 @@ export default function SectorenDetails() {
     const navigate = useNavigate()
     const { loading, sectorData, getSectorInfo, getBestKmosSector, bestKmosSector, setSingleKmo } = useContext(SearchContext)
 
-
+{console.log(sectorData)}
     useEffect(() => {
-        if (!sectorData || parseInt(sectorid) !== sectorData.id) {
+        if (!sectorData ||sectorid !== sectorData.code) {
             getSectorInfo(sectorid)
             getBestKmosSector(sectorid)
         }
@@ -25,7 +25,7 @@ export default function SectorenDetails() {
     if (sectorData?.notFound)
         return <Navigate to={'/404'} replace />
 
-    if (!loading && sectorData && parseInt(sectorid) === sectorData.id)
+    if (!loading && sectorData && sectorid === sectorData.code)
         return <div className="inside-main">
             <Title>{sectorData.naam}</Title>
             {

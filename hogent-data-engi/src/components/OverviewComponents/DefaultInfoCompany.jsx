@@ -11,7 +11,6 @@ export default function DefaultInfoCompany(){
         <h3>{sr?.naam ? sr.naam : 'Geen bedrijf gevonden'}</h3>
         <hr/>
         <div className="table-container">
-        {/* TODO Implement real values */}
         <table className="table-default-info">
             <tbody>
                 <tr>
@@ -28,7 +27,7 @@ export default function DefaultInfoCompany(){
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td>{sr?.email ? <a href={`mailto:${sr.email}`}>{sr.email}</a> : '/'}</td>
+                    <td>{sr?.email && sr?.email !== 'NaN' ? <a href={`mailto:${sr.email}`}>{sr.email}</a> : '/'}</td>
                 </tr>
                 <tr>
                     <th>Adres</th>
@@ -42,9 +41,9 @@ export default function DefaultInfoCompany(){
                     <th>Website</th>
                     <td>
                         {
-                            sr?.website
+                            sr?.websiteurl
                             ? 
-                            sr.website.split(',').map((o, i) => <span key={i}><a href={o} target='_blank' rel="noreferrer" data-tip={o}>[{i +1}] </a><ReactTooltip/></span>)
+                            sr.websiteurl.split(',').map((o, i) => <span key={i}><a href={o} target='_blank' rel="noreferrer" data-tip={o}>[{i +1}] </a><ReactTooltip/></span>)
                             : '/'
                         }
                         
@@ -54,8 +53,8 @@ export default function DefaultInfoCompany(){
                     <th>Jaarverslag</th>
                     <td>
                         {
-                            sr?.link 
-                            ? <a href={sr.link} target='_blank' rel="noreferrer">Download Jaarverslag</a>
+                            sr?.jaarverslagurl 
+                            ? <a href={sr.jaarverslagurl} target='_blank' rel="noreferrer">Download Jaarverslag</a>
                             : '/'  
                         }
                     </td>
@@ -68,23 +67,23 @@ export default function DefaultInfoCompany(){
             <tbody>
                 <tr>
                     <th>Omzetcijfer</th>
-                    <td>{sr?.omzetcijfer && sr?.omzetcijfer !== '-1' ? '€ ' + sr.omzetcijfer : '/'}</td>
+                    <td>{sr?.omzet && sr?.omzet !== '-1' ? '€ ' + sr.omzet : '/'}</td>
                 </tr>
                 <tr>
                     <th>Balanstotaal</th>
                     <td>{sr?.balanstotaal ? '€ ' + sr.balanstotaal : '/'}</td>
                 </tr>
-                <tr>
+                {/*<tr>
                     <th>Framework voor duurzaamheidsrapportering</th>
                     <td>{sr?.duurzaamheidsframework === null ? 'Neen' : (sr?.duurzaamheidsframework ? sr.duurzaamheidsframework : '/')}</td>
-                </tr>
+                </tr>*/}
                 <tr>
                     <th>Beursnotatie</th>
                     <td>{(sr?.beursnotatie === undefined || sr?.beursnotatie === null ? '/' : (Boolean(sr?.beursnotatie) ? 'Beursgenoteerd' : 'Niet Beursgenoteerd'))}</td>
                 </tr>
                 <tr>
                     <th>Aantal werknemers</th>
-                    <td>{sr?.aantalWerknemers ? sr.aantalWerknemers : '/'}</td>
+                    <td>{sr?.aantalwerknemers ? sr.aantalwerknemers : '/'}</td>
                 </tr>
                 <tr>
                     <th>B2B of B2C</th>
@@ -96,7 +95,7 @@ export default function DefaultInfoCompany(){
                 </tr>
                 <tr>
                     <th>Subsector</th>
-                    <td>{sr?.sector ? <Link to={`/sectoren/${sr.sectorid}`}>{sr.sector}</Link> : '/'}</td>
+                    <td>{sr?.sector ? <Link to={`/sectoren/${sr.code}`}>{sr.sector}</Link> : '/'}</td>
                 </tr>
             </tbody>
         </table>
