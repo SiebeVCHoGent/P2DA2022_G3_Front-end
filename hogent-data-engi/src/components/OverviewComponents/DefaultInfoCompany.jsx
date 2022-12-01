@@ -78,8 +78,8 @@ export default function DefaultInfoCompany(){
                     <td>{sr?.duurzaamheidsframework === null ? 'Neen' : (sr?.duurzaamheidsframework ? sr.duurzaamheidsframework : '/')}</td>
                 </tr>*/}
                 <tr>
-                    <th>Beursnotatie</th>
-                    <td>{(sr?.beursnotatie === undefined || sr?.beursnotatie === null ? '/' : (Boolean(sr?.beursnotatie) ? 'Beursgenoteerd' : 'Niet Beursgenoteerd'))}</td>
+                    <th>beursgenoteerd</th>
+                    <td>{(sr?.beursgenoteerd === undefined || sr?.beursgenoteerd === null ? '/' : (Boolean(sr?.beursgenoteerd) ? 'Beursgenoteerd' : 'Niet Beursgenoteerd'))}</td>
                 </tr>
                 <tr>
                     <th>Aantal werknemers</th>
@@ -91,7 +91,7 @@ export default function DefaultInfoCompany(){
                 </tr>
                 <tr>
                     <th>Hoofdsector</th>
-                    <td>{sr?.hoofdsector ? <Link to={`/hoofdsectoren/${sr.hoofdsectorId}`}>{sr.hoofdsector}</Link> : '/'}</td>
+                    <td>{sr?.hoofdsector ? <Link to={`/hoofdsectoren/${sr.parent}`}>{sr.hoofdsector}</Link> : '/'}</td>
                 </tr>
                 <tr>
                     <th>Subsector</th>

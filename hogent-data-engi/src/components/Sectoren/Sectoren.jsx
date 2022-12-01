@@ -50,10 +50,11 @@ export default function Sectoren() {
                     {
                         bestSectorsHS ?
                         bestSectorsHS.map((s, i) => {
-                                return <tr key={s.id} onClick={() => {navigate(`/hoofdsectoren/${s.id}`) }}>
+                                return <tr key={s.parent} onClick={() => {navigate(`/hoofdsectoren/${s.parent}`) }}>
                                     <td>{i+1}</td>
                                     <td>{s.naam}</td>
-                                    <td>{Math.round((s.average) * 100) / 100}</td>
+                                    {/*<td>{Math.round((s.average) * 100) / 100}</td>*/}
+                                    <td>{"/"}</td>
                                 </tr>
                             })
                             : <></>
@@ -91,10 +92,11 @@ export default function Sectoren() {
                     {
                         filtered ?
                             filtered.map((s) => {
-                                return <tr key={s.sectorId} onClick={() => {navigate(`/sectoren/${s.sectorId}`) }}>
+                                return <tr key={s.code} onClick={() => {navigate(`/sectoren/${s.code}`) }}>
                                     <td>{s.place}</td>
                                     <td>{s.naam}</td>
-                                    <td>{Math.round((s.average) * 100) / 100}</td>
+                                    {/*<td>{Math.round((s.average) * 100) / 100}</td>*/}
+                                    <td>{"/"}</td>
                                 </tr>
                             })
                             : <></>

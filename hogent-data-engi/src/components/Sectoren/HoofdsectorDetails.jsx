@@ -11,7 +11,7 @@ export default function HoofdsectorDetails() {
 
 
     useEffect(() => {
-        if (!sectorData || parseInt(sectorid) !== sectorData.id) {
+        if (!sectorData || sectorid !== sectorData?.code) {
             getHoofdSectorInfo(sectorid)
             getBestKmosHoofdSector(sectorid)
         }
@@ -24,11 +24,11 @@ export default function HoofdsectorDetails() {
 
     if (sectorData?.notFound)
         return <Navigate to={'/404'} replace />
-
-    if (sectorData && parseInt(sectorid) === sectorData.id)
+    if (sectorData && sectorid === sectorData.code)
         return <div className="inside-main">
             <Title><span className="capitalize">{sectorData.naam}</span></Title>
             {
+                
                 bestKmosSector.length > 0 ? <>
                     <h3>Beste kmo's in '{sectorData.naam}'</h3>
                     <hr />
@@ -47,7 +47,7 @@ export default function HoofdsectorDetails() {
                                         return <tr onClick={() => { kmoDetails(o) }} key={o.ondernemingsnummer}>
                                             <td>{i + 1}</td>
                                             <td>{o.ondernemingsnummer} - {o.naam} - {o.gemeente}</td>
-                                            <td>{o.Score}</td>
+                                            <td>{o.Score ? o.Score : "/"}</td>
                                         </tr>
                                     })
                                 }

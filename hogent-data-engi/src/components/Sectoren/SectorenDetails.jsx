@@ -9,7 +9,6 @@ export default function SectorenDetails() {
     const navigate = useNavigate()
     const { loading, sectorData, getSectorInfo, getBestKmosSector, bestKmosSector, setSingleKmo } = useContext(SearchContext)
 
-{console.log(sectorData)}
     useEffect(() => {
         if (!sectorData ||sectorid !== sectorData.code) {
             getSectorInfo(sectorid)
