@@ -1,12 +1,13 @@
 import './CodingTree.css'
 
-import React, { Children, useEffect } from 'react'
+import React, { /*Children,*/ useEffect } from 'react'
 
-import Xarrow from 'react-xarrows'
-import { useContext, useMemo } from 'react'
+
+import { useContext, /*useMemo*/ } from 'react'
 import { SearchContext } from '../../contexts/SearchProvider'
-import ReactTooltip from 'react-tooltip'
+/*import ReactTooltip from 'react-tooltip'
 import { Link } from 'react-router-dom'
+import Xarrow from 'react-xarrows'*/
 
 const tree_connections = [
   ['duurzaamheid_kmos', 'menselijk'],
@@ -89,10 +90,10 @@ export default function CodingTree() {
     }
   }, [sr])
 
-
+  
   return <div className="coding-tree-container">
     <div className="coding-tree-grid elements" id='coding-tree-elements'>
-      <Link to={'/dashboard/gendergelijkheid'} className='tree-obj tree-leave1' id="gendergelijkheid" data-tip data-for='gendergelijkheid_t'>Gender Gelijkheid</Link>
+     {/*<><Link to={'/dashboard/gendergelijkheid'} className='tree-obj tree-leave1' id="gendergelijkheid" data-tip data-for='gendergelijkheid_t'>Gender Gelijkheid</Link>
       <ReactTooltip id='gendergelijkheid_t' effect='solid'>
         <span>Niet Gevonden</span>
       </ReactTooltip>
@@ -162,7 +163,7 @@ export default function CodingTree() {
         tree_connections.map(con => {
           return <Xarrow key={con[0] + con[1]} start={con[0]} end={con[1]} zIndex={50} showHead={false} strokeWidth={2} color="#000" curveness={0.2} />
         })
-      }
+      }</>*/}
     </div>
   </div>
 } 

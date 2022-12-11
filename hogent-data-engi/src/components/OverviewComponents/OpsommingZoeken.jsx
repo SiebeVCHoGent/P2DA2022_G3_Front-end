@@ -8,8 +8,8 @@ export default function OpsommingZoeken(){
         <h3>Zoekresultaten:</h3>
         <hr/>
         {
-            arr.map(o => {
-                return <div key={o.ondernemingsnummer} onClick={() => {setSingleKmo(o)}} className='pointer'>
+            arr.map((o,i) => {
+                return <div key={i} onClick={() => {setSingleKmo(o)}} className='pointer'>
                     <p> <b>{o.ondernemingsnummer}</b> - {o.naam} - {o.gemeente}</p>
                     <hr/>
                 </div>

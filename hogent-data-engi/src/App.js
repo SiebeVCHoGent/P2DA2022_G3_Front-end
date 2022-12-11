@@ -1,6 +1,7 @@
 import './App.css';
 import Navigation from './components/Navigation';
 import Overview from './components/OverviewComponents/Overview';
+import { SearchTermProvider } from './contexts/SearchTermProvider';
 import { SearchProvider } from './contexts/SearchProvider';
 import { AuthProvider } from './contexts/AuthProvider';
 
@@ -15,12 +16,14 @@ import Register from './components/Account/Register';
 import Account from './components/Account/Account';
 import PrivateRoute from './components/PrivateRoute'
 import HoofdsectorDetails from './components/Sectoren/HoofdsectorDetails';
+import SearchTerms from './components/SearchTerms/SearchTerms';
 
 function App() {
   return (
     <div className='body'>
           <AuthProvider>
             <Navigation></Navigation>
+            <SearchTermProvider>
               <SearchProvider>
                 <main>
                   <Routes>
@@ -33,11 +36,14 @@ function App() {
                       <Route exact path='/hoofdsectoren/:sectorid' element={<PrivateRoute><HoofdsectorDetails /></PrivateRoute>}/>
                       <Route exact path='dashboard' element={<PrivateRoute><Overview/></PrivateRoute>} />
                       <Route exact path='/dashboard/:item' element={<PrivateRoute><CodingTreeItemOverview /></PrivateRoute>}/>
+                      
+                      <Route exact path='/searchterms' element={<PrivateRoute><SearchTerms /></PrivateRoute>}/>
                       <Route exact path='/404' element={<NotFound />}/> 
                       <Route path='*' element={<Navigate to={'/404'} replace />} />
                   </Routes>
                 </main>
-              </SearchProvider>
+                </SearchProvider>
+              </SearchTermProvider>
           </AuthProvider>
       </div>
     );

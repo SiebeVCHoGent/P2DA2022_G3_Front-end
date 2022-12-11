@@ -72,6 +72,14 @@ main {
   flex: 1;
 }
 
+.flex {
+  display: flex;
+}
+
+.marginbottom {
+margin-bottom: 10px;
+}
+
 .inside-main {
   margin: 40px;
 }
