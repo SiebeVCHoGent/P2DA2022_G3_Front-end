@@ -44,6 +44,13 @@ a {
   cursor: pointer;
 }
 
+.add {
+  background-color: #00FF00;
+  border: 1px solid #00FF00;
+  margin-left: 5px;
+  border-radius: 5px;
+}
+
 .nav .a{
   color: white;
   font-weight: normal;

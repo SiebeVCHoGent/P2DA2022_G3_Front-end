@@ -5,7 +5,7 @@ import Title from "../Title";
 import Words from './Words'
 
 export default function SearchTerms() {
-    const { getSearchTerms, searchTerms, loading,settTerm,term } = useContext(SearchTermContext)
+    const { getSearchTerms, searchTerms, loading,setTheTerm,term } = useContext(SearchTermContext)
 
     
 
@@ -17,13 +17,13 @@ export default function SearchTerms() {
 
     const Subterm = memo((props)=>{
         const x = props.x
-        return <div className="pointer marginbottom" onClick={()=>settTerm(x)}>{' - '+x.term} {x.children.map(c=>{return <Subterm x={c} key={c.id}/>})}</div>
+        return <div className="pointer marginbottom" onClick={()=>setTheTerm(x)}>{' - '+x.term} {x.children.map(c=>{return <Subterm x={c} key={c.id}/>})}</div>
     })
 
     const Term = memo((props) => {
         const x = props.x
         return < >
-            <div><b className="pointer" onClick={()=>settTerm(x)}>{x.term}</b>{x.children.map(c=>{return <Subterm x={c} key={c.id}/>})}</div>
+            <div><b className="pointer" onClick={()=>setTheTerm(x)}>{x.term}</b>{x.children.map(c=>{return <Subterm x={c} key={c.id}/>})}</div>
             <hr/>
         </>
     })

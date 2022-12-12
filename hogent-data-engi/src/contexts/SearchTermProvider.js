@@ -19,6 +19,21 @@ import {
     const [searchTerms, setSearchTerms] = useState();
     const [words,setWords] = useState()
     const [term,setTerm] = useState()
+
+    const addWord = useCallback(async (word) => {
+      try {
+        setLoading(true);
+        setError();
+  
+        const data = await api.addWord(term?.id,word);
+        if (!data) setError("Woord toevoegen mislukt");
+        else setWords(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    },[term?.id])
   
     const getSearchTerms = useCallback(
       async () => {
@@ -59,7 +74,7 @@ import {
       }
     },[ready])
 
-    const settTerm = useCallback(async (term)=>{
+    const setTheTerm = useCallback(async (term)=>{
       setTerm(term)
     },[])
   
@@ -73,7 +88,7 @@ import {
         searchTerms
         ,setWoorden,
         words,
-        term,settTerm
+        term,setTheTerm,addWord
       }),
       [
         getSearchTerms,
@@ -81,7 +96,7 @@ import {
         loading,
         searchTerms,
         words,
-        setWoorden,term,settTerm
+        setWoorden,term,setTheTerm,addWord
       ]
     );
   
