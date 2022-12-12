@@ -4,6 +4,8 @@ import Title from "../Title";
 import ReactLoading from 'react-loading'
 import {useForm} from 'react-hook-form'
 import { GrFormAdd } from 'react-icons/gr'
+import { BsTrashFill } from 'react-icons/bs'
+import { BiMessageSquareAdd } from 'react-icons/bi'
 
 
 
@@ -32,10 +34,10 @@ export default function Words() {
         {loading ? <ReactLoading type="bars" color="#000"/> : <></>}
         <form onSubmit={handleSubmit(onSubmit)}>
         <input placeholder="Voeg woord toe" {...register('woord',{required:true})} />
-        <span className="pointer add" onClick={handleSubmit(onSubmit)}><GrFormAdd/></span>
+        <span className="pointer add" onClick={handleSubmit(onSubmit)}><BiMessageSquareAdd/></span>
         </form>
         {Array.isArray(words) ? words.map((s) => {
-            return <div key={s.id}>{s.woord}</div>
+            return <div key={s.id}><BsTrashFill className="remove"/>{s.woord}</div>
         }) : null}
         </div>
     </div>

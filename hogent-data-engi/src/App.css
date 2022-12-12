@@ -44,11 +44,15 @@ a {
   cursor: pointer;
 }
 
-.add {
-  background-color: #00FF00;
-  border: 1px solid #00FF00;
-  margin-left: 5px;
-  border-radius: 5px;
+.add, .remove {
+  color: #bb90bd;
+  font-size: 25px;
+
+  margin: 0 5px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  
 }
 
 .nav .a{
