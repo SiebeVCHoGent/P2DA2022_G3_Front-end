@@ -38,6 +38,15 @@ export default function Navigation()
                     </div>
                     : null
                 }
+                {
+                    user && user?.roles?.includes("admin") ?
+                    <div className='nav-sub'>
+                        <span className='nav-sub-title'>ADMIN TOOLS</span>
+                        <ul className="nav-sub-list">
+                            <li><Link to={'/roles'} className='a'>Rollen</Link></li>
+                        </ul>
+                    </div> : null
+                }
 
             </div>
         </div>

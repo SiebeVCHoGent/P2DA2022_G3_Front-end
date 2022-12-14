@@ -27,3 +27,18 @@ export const register = async ({
 	} = await axios2.post(`/register`, body);
 	return data;
 };
+
+export const searchUser = async (email) => {
+	const body = {email}
+	const {
+		data
+	} = await axios2.post(`/user/search`, body);
+	return data;
+}
+
+export const updateRole = async (id, role) => {
+	const {
+		data
+	} = await axios2.patch(`/user/${id}/role/${role}`);
+	return data;
+}

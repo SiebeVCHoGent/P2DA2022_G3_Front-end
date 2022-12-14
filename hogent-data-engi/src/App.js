@@ -18,6 +18,7 @@ import PrivateRoute from './components/PrivateRoute'
 import HoofdsectorDetails from './components/Sectoren/HoofdsectorDetails';
 import SearchTerms from './components/SearchTerms/SearchTerms';
 import Voorspellen from './components/SearchTerms/Voorspellen';
+import Roles from './components/Account/Roles';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
                       
                       <Route exact path='/searchterms' element={<PrivateRoute roles={["moderator"]}><SearchTerms /></PrivateRoute>}/>
                       <Route exact path='/voorspellen' element={<PrivateRoute roles={["moderator"]}><Voorspellen /></PrivateRoute>}/>
+                      <Route exact path='/roles' element={<PrivateRoute roles={["admin"]}><Roles /></PrivateRoute>}/>
                       <Route exact path='/404' element={<NotFound />}/> 
                       <Route path='*' element={<Navigate to={'/404'} replace />} />
                   </Routes>

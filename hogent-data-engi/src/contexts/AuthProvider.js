@@ -13,7 +13,7 @@ export const AuthProvider = ({
 }) => {
 
     const [loading, setLoading] = useState(false);
-	const [error, setError] = useState('');
+	const [error, setError] = useState();
 	const [token, setToken] = useState(localStorage.getItem(JWT_TOKEN_KEY));
 	const [user, setUser] = useState(null);
 
@@ -117,6 +117,53 @@ export const AuthProvider = ({
 		return false;
 	}, [token])
 
+
+	const [foundUser, setFoundUser] = useState(null);
+
+	const searchUser = useCallback(async (email) => {
+		try {
+			setLoading(true);
+			setError('');
+
+			const user = await usersApi.searchUser(email);
+			setFoundUser(user);
+
+			if (user == null){
+				console.log("NOT FOUND")
+				setError('Geen gebruiker gevonden met dit email adres.');
+				return false;
+			}
+
+			return true
+		} catch (error) {
+			console.error(error);
+			setError('Probleem bij het zoeken naar de gebruiker.');
+			return false;
+		} finally {
+			setLoading(false);
+		}
+	}, []);
+
+	const updateRole = useCallback(async (id, role) => {
+		try {
+			setLoading(true);
+			setError('');
+			
+			const user = await usersApi.updateRole(id, role);
+			setFoundUser(user);
+
+			return true
+		} catch (error) {
+			console.error(error);
+			setError('Probleem bij het updaten van de gebruiker.');	
+			return false;
+		} finally {
+			setLoading(false);
+		}
+	}, []);
+
+
+
     const value = useMemo(() => ({
         login,
         logout,
@@ -128,8 +175,11 @@ export const AuthProvider = ({
 		ready,
 		isAuthenticated: Boolean(token),
 		isAdmin: isRole('admin'),
-		isRole
-	}), [token, user, error, loading, ready, login, logout, register, isRole]);
+		isRole,
+		searchUser,
+		updateRole,
+		foundUser
+	}), [token, user, error, loading, ready, foundUser, login, logout, register, isRole, searchUser, updateRole]);
 
     return (
 		<AuthContext.Provider value={value}>
