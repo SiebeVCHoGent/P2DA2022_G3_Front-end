@@ -12,7 +12,6 @@ import Title from "../Title";
 
 export default function Overview() {
     const { arrResults } = useContext(SearchContext)
-    console.log(arrResults)
 
     return <div className="inside-main">
         <Title>Dashboard</Title>

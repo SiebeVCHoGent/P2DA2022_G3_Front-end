@@ -9,7 +9,7 @@ export default function DefaultInfoCompany(){
     console.log(sr)
 
     return <div className="default-info-container">
-        <h3>{sr?.naam ? sr.naam : 'Geen bedrijf gevonden'}</h3>
+        <h3>{sr?.Kmo?.naam ? sr.Kmo.naam : 'Geen bedrijf gevonden'}</h3>
         <hr/>
         <div className="table-container">
         <table className="table-default-info">
@@ -44,7 +44,7 @@ export default function DefaultInfoCompany(){
                     <td>
                         {
                             sr?.verslagen?.length > 0 && sr?.verslagen[0]?.website_url ?
-                            <a href={sr?.verslagen[0]?.website_url}>{sr?.verslagen[0]?.website_url}</a>
+                            <a target="_blank" href={sr?.verslagen[0]?.website_url} rel="noreferrer">{sr?.verslagen[0]?.website_url}</a>
                             : '/'
                         }
                     </td>
@@ -107,10 +107,14 @@ export default function DefaultInfoCompany(){
                     <th>B2B of B2C</th>
                     <td>{(sr?.isB2B === undefined || sr?.isB2B === null ? '/' : (Boolean(sr?.isB2B) ? 'B2B' : 'B2C'))}</td>
                 </tr> */}
-                {/* <tr>
+                <tr>
                     <th>Hoofdsector</th>
-                    <td>{sr?.hoofdsector ? <Link to={`/hoofdsectoren/${sr.parent}`}>{sr.hoofdsector}</Link> : '/'}</td>
-                </tr> */}
+                    <td>
+                        {
+                            sr?.Hoofdsector?.naam ? <Link to={`/sectoren/${sr.Hoofdsector.code}`}>{sr.Hoofdsector.naam}</Link> : '/'
+                        }
+                    </td>
+                </tr>
                 <tr>
                     <th>Subsector</th>
                     <td>

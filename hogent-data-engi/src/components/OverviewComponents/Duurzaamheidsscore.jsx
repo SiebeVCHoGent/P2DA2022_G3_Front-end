@@ -6,16 +6,9 @@ export default function Duurzaamheidsscore()
     const {searchresult: sr} = useContext(SearchContext)
 
     return <div>
-        <h2>Websitescore{sr?.website_score ? ': ' + sr.website_score + ' punten' : ''}<br/><br/>Jaarverslagscore{sr?.jaarverslag_score ? ': ' + sr.jaarverslag_score + ' punten' : ''}</h2>
-        
-       {/* <div className="duurzaam-container">
-            <div className="big-letters">
-                <p className="big-letter duurzaam-letter">{sr?.duurzaamheidsscore ? sr.duurzaamheidsscore : '-'}</p>
-                <p className={`big-letter ${sr?.Percentiel ? 'smaller' : ''} duurzaam-letter`}>{sr?.Percentiel ? 'beste ' + Math.ceil(sr.Percentiel) + ' %' : '-'}</p>
-            </div>
-            <p className="duurzaam-text">Op basis van het totaal aantal opzoektermen van de coding tree bepalen we de maximale totaalscore die een kmo kan krijgen indien deze over 
-                elke opzoekterm rapporteert. Iedere opzoekterm krijgt 1 punt.
-            </p>
-        </div>*/}
+        <h2>Scores</h2>
+        <p><b>Totale score: </b>{sr?.score?.total_score !== null ? Math.round(sr?.score?.total_score*1000)/10 + " punten": 'Geen score gevonden'}</p>
+        <p><b>Websitescore: </b>{sr?.score?.website_score !== null ?  Math.round(sr?.score?.website_score*1000)/10 + ' punten' : ''}</p>
+        <p><b>Jaarverslagscore: </b>{sr?.score?.jaarverslag_score !== null ?  Math.round(sr?.score?.jaarverslag_score*1000)/10 + ' punten' : ''}</p>
     </div>
 }

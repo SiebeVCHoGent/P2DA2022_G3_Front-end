@@ -286,6 +286,7 @@ hr {
 
 .default-info-container {
   margin-top: 30px;
+  max-width:900px;
 }
 
 .table-economics {
@@ -490,8 +491,17 @@ hr {
   font-weight: bold;
 }
 
+.table-top.a tr {
+  text-align: center;
+  font-weight: bold;
+}
+
 .search-container-sector{
   margin-bottom: 30px;
+  width: 100%;
+}
+
+.w-100{
   width: 100%;
 }
 /*# sourceMappingURL=App.css.map */
