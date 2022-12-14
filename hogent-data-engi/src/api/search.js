@@ -21,7 +21,7 @@ export const getBestKmosSector = async (sectorId) => {
 }
 
 export const getBestSectors = async () => {
-    const { data } = await axios.get(`/sector/best`)
+    const { data } = await axios2.get(`/score/ranking/2021/sector`)
     return data
 }
 
@@ -31,6 +31,6 @@ export const getBestKmosHoofdSector = async (sectorId) => {
 }
 
 export const getBestHoofdSectors = async () => {
-    const { data } = await axios.get(`/hoofdsector/best`)
+    const { data } = await axios2.get(`/score/ranking/2021/hoofdsector`)
     return data
 }
