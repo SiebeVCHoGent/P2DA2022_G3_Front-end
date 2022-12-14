@@ -22,6 +22,10 @@ export const AuthProvider = ({
 		const expiry = parseExp(exp);
 		const stillValid = expiry >= new Date();
 
+		const user = parseJwt(token);
+		delete user.exp;
+		setUser(user);
+
 		if (stillValid) {
 			localStorage.setItem(JWT_TOKEN_KEY, token);
 		} else {
@@ -62,8 +66,10 @@ export const AuthProvider = ({
 		try {
 			setLoading(true);
 			setError('');
-			const { token, user } = await usersApi.register(voornaam, achternaam, email, ww);
+			const { token } = await usersApi.register(voornaam, achternaam, email, ww);
 			setSession(token);
+			const user = parseJwt(token);
+			delete user.exp;
 			setUser(user);
 			return true;
 		} catch (error) {
