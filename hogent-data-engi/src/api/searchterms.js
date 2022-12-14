@@ -14,3 +14,8 @@ export const addWord = async (term,word) => {
     const { data } = await axios2.post(`/searchterm/${term}/woord/${word}`,)
     return data
 }
+
+export const deleteWord = async (term,id) => {
+    const { data } = await axios2.delete(`/searchterm/${term}/woord/${id}`)
+    return data
+}

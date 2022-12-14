@@ -1,13 +1,13 @@
-import { useContext, useEffect, memo } from "react";
+import React, { useContext, useEffect, memo } from "react";
 import { SearchTermContext } from "../../contexts/SearchTermProvider";
 import ReactLoading from 'react-loading'
 import Title from "../Title";
 import Words from './Words'
+import { BsFillInfoCircleFill } from "react-icons/bs";
+
 
 export default function SearchTerms() {
-    const { getSearchTerms, searchTerms, loading,setTheTerm,term } = useContext(SearchTermContext)
-
-    
+    const { getSearchTerms, searchTerms, loading, setTheTerm, term } = useContext(SearchTermContext)
 
     useEffect(() => {
         if (!searchTerms) {
@@ -15,29 +15,52 @@ export default function SearchTerms() {
         }
     }, [searchTerms, getSearchTerms])
 
-    const Subterm = memo((props)=>{
-        const x = props.x
-        return <div className="pointer marginbottom" onClick={()=>setTheTerm(x)}>{' - '+x.term} {x.children.map(c=>{return <Subterm x={c} key={c.id}/>})}</div>
-    })
-
-    const Term = memo((props) => {
-        const x = props.x
-        return < >
-            <div><b className="pointer" onClick={()=>setTheTerm(x)}>{x.term}</b>{x.children.map(c=>{return <Subterm x={c} key={c.id}/>})}</div>
-            <hr/>
+    const Actions = memo((props)=>{
+        return <>
+           <BsFillInfoCircleFill className="icon"/>
         </>
     })
+
+    function printAllChildren (children) {
+        return children.map((c,i)=>{
+            return <React.Fragment key={i}>
+                <tr key={c.id} onClick={() => setTheTerm(c)}>
+                    <td></td>
+                    <td>{c.term}</td>
+                    <td><Actions/></td>
+                </tr>
+                {c?.children ? printAllChildren(c.children) : <></>}
+            </React.Fragment>
+        })
+    }
 
     if (term) return <Words/>
     return <div className="inside-main">
         <Title>Zoektermen</Title>
-        <h3>Het overzicht van alle zoektermen.</h3>
+        <h3>Overzicht van alle zoektermen.</h3>
         <hr></hr>
         {loading ? <ReactLoading type="bars" color="#000"/> : <></>}
-        <div className="default-info-container table-container"><hr/>
-        {searchTerms ? searchTerms.map((s) => {
-            return <div><Term x={s} key={s.id}/></div>
-        }) : null}
-        </div>
-        </div>
+        <table className="table-top w-100 a">
+            <thead>
+                <tr>
+                    <td>Hoofdtitel</td>
+                    <td>Subtitel</td>
+                    <td>Acties</td>
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    searchTerms ? searchTerms.map((s, i) => {
+                        return <React.Fragment key={i}><tr key={s.id} onClick={() => setTheTerm(s)}>
+                            <td>{s.term}</td>
+                            <td></td>
+                            <td><Actions /></td>
+                        </tr>
+                            {s.children ? printAllChildren(s.children) : <></>}
+                        </ React.Fragment>
+                    }) : <tr><td colSpan={3}>Geen Zoektermen Gevonden</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }

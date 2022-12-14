@@ -17,6 +17,7 @@ import Account from './components/Account/Account';
 import PrivateRoute from './components/PrivateRoute'
 import HoofdsectorDetails from './components/Sectoren/HoofdsectorDetails';
 import SearchTerms from './components/SearchTerms/SearchTerms';
+import Voorspellen from './components/SearchTerms/Voorspellen';
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
                       <Route exact path='dashboard' element={<PrivateRoute><Overview/></PrivateRoute>} />
                       <Route exact path='/dashboard/:item' element={<PrivateRoute><CodingTreeItemOverview /></PrivateRoute>}/>
                       
-                      <Route exact path='/searchterms' element={<PrivateRoute><SearchTerms /></PrivateRoute>}/>
+                      <Route exact path='/searchterms' element={<PrivateRoute roles={["moderator"]}><SearchTerms /></PrivateRoute>}/>
+                      <Route exact path='/voorspellen' element={<PrivateRoute roles={["moderator"]}><Voorspellen /></PrivateRoute>}/>
                       <Route exact path='/404' element={<NotFound />}/> 
                       <Route path='*' element={<Navigate to={'/404'} replace />} />
                   </Routes>

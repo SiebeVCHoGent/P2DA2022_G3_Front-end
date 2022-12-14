@@ -34,6 +34,22 @@ import {
         setLoading(false);
       }
     },[term?.id])
+
+
+    const deleteWord = useCallback(async (id) => {
+      try {
+        setLoading(true);
+        setError();
+
+        const data = await api.deleteWord(term?.id, id);
+        if (!data) setError("Woord verwijderen mislukt");
+        else setWords(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    },[term?.id])
   
     const getSearchTerms = useCallback(
       async () => {
@@ -88,7 +104,8 @@ import {
         searchTerms
         ,setWoorden,
         words,
-        term,setTheTerm,addWord
+        term,setTheTerm,addWord,
+        deleteWord
       }),
       [
         getSearchTerms,
@@ -96,7 +113,8 @@ import {
         loading,
         searchTerms,
         words,
-        setWoorden,term,setTheTerm,addWord
+        setWoorden,term,setTheTerm,addWord,
+        deleteWord
       ]
     );
   

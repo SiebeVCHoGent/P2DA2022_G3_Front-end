@@ -1,10 +1,13 @@
+import { useContext } from 'react'
 import {  useState } from 'react'
 import { HiOutlineMenuAlt2 } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../contexts/AuthProvider'
 
 export default function Navigation()
 {
     const [navHidden, setNavHidden] = useState(false)
+    const {user} = useContext(AuthContext)
 
     return (
     <nav>
@@ -24,12 +27,18 @@ export default function Navigation()
                         <li><Link to={'/sectoren'} className='a'>Sectoren</Link></li>
                     </ul>
                 </div>
-                <div className='nav-sub'>
-                    <span className='nav-sub-title'>MODERATOR TOOLS</span>
-                    <ul className="nav-sub-list">
-                        <li><Link to={'/searchterms'} className='a'>Zoektermen</Link></li>
-                    </ul>
-                </div>
+                {
+                    user && user?.roles?.includes("moderator") ?
+                    <div className='nav-sub'>
+                        <span className='nav-sub-title'>MODERATOR TOOLS</span>
+                        <ul className="nav-sub-list">
+                            <li><Link to={'/searchterms'} className='a'>Zoektermen</Link></li>
+                            <li><Link to={'/voorspellen'} className='a'>Voorspellen</Link></li>
+                        </ul>
+                    </div>
+                    : null
+                }
+
             </div>
         </div>
         <div className='nav-collapsed' hidden={!navHidden}>

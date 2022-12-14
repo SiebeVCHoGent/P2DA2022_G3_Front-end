@@ -195,6 +195,15 @@ header{
   flex-direction: row;
 }
 
+.icon{
+  font-size: 30px;
+}
+
+.icon:hover{
+  color: #bb90bd;
+  transition: .2s;
+}
+
 .flag img{
   margin-top: 8px;
   max-width: 30px;
@@ -503,5 +512,22 @@ hr {
 
 .w-100{
   width: 100%;
+}
+
+.w-50{
+  max-width: 50%;
+}
+
+.flex-2{
+  display: flex;
+}
+
+.input-field{
+  width: 100%;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid black;
+  padding-left: 15px;
+  font-weight: bold;
 }
 /*# sourceMappingURL=App.css.map */
