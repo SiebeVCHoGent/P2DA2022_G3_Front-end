@@ -43,6 +43,22 @@ export const SearchProvider = ({ children }) => {
     }
   }, []);
 
+  const getKmoByOndernemingsnummer = useCallback(async (query) => {
+    try {
+      setLoading(true);
+      setError();
+      setSearchresult(null);
+
+      const data = await api.getKmoByOndernemingsnummer(query);
+      setSearchresult(data.kmo);
+      
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
   const getSectorInfo = useCallback(
     async (id) => {
       if (ready) {
@@ -106,6 +122,7 @@ export const SearchProvider = ({ children }) => {
         try {
           setLoading(true);
           setError();
+          setBestKmosSector(null)
 
           const data = await api.getBestKmosSector(sectorid);
           setBestKmosSector(data.kmos);
@@ -125,6 +142,7 @@ export const SearchProvider = ({ children }) => {
         try {
           setLoading(true);
           setError();
+          setBestKmosSector(null)
 
           const data = await api.getBestKmosHoofdSector(sectorid);
           setBestKmosSector(data.kmos);
@@ -180,6 +198,7 @@ export const SearchProvider = ({ children }) => {
       getBestSectors,
       getBestHoofdSectors,
       getBestKmosHoofdSector,
+      getKmoByOndernemingsnummer,
       bestSectorsHS,
       searchresult,
       arrResults,
@@ -198,6 +217,7 @@ export const SearchProvider = ({ children }) => {
       getBestSectors,
       getBestHoofdSectors,
       getBestKmosHoofdSector,
+      getKmoByOndernemingsnummer,
       bestSectorsHS,
       searchresult,
       arrResults,

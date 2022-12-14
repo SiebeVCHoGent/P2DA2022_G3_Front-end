@@ -32,8 +32,8 @@ function App() {
                       <Route exact path='/account/register' element={<Register/>} />
                       <Route exact path='/' element={<Uitleg/>}/>
                       <Route exact path='/sectoren' element={<PrivateRoute><Sectoren /></PrivateRoute>}/>
-                      <Route exact path='/sectoren/:sectorid' element={<PrivateRoute><SectorenDetails /></PrivateRoute>}/>
-                      <Route exact path='/hoofdsectoren/:sectorid' element={<PrivateRoute><HoofdsectorDetails /></PrivateRoute>}/>
+                      <Route exact path='/sectoren/:naam/:sectorid' element={<PrivateRoute><SectorenDetails /></PrivateRoute>}/>
+                      <Route exact path='/hoofdsectoren/:naam/:sectorid' element={<PrivateRoute><HoofdsectorDetails /></PrivateRoute>}/>
                       <Route exact path='dashboard' element={<PrivateRoute><Overview/></PrivateRoute>} />
                       <Route exact path='/dashboard/:item' element={<PrivateRoute><CodingTreeItemOverview /></PrivateRoute>}/>
                       

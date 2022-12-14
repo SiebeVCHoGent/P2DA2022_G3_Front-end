@@ -3,7 +3,6 @@ import { SearchContext } from "../../contexts/SearchProvider";
 
 export default function OpsommingZoeken(){
     const { arrResults: arr, setSingleKmo } = useContext(SearchContext)
-    console.log(arr)
 
     return <div className="default-info-container table-container"> 
         <h3>Zoekresultaten:</h3>

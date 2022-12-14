@@ -5,31 +5,27 @@ import Title from "../Title"
 import ReactLoading from 'react-loading'
 
 export default function SectorenDetails() {
-    const { sectorid } = useParams()
+    const { sectorid, naam } = useParams()
     const navigate = useNavigate()
-    const { loading, sectorData, getSectorInfo, getBestKmosSector, bestKmosSector, setSingleKmo } = useContext(SearchContext)
+    const { loading, getBestKmosSector, bestKmosSector, getKmoByOndernemingsnummer } = useContext(SearchContext)
 
     useEffect(() => {
-        if (!sectorData ||sectorid !== sectorData.code) {
-            getSectorInfo(sectorid)
-            getBestKmosSector(sectorid)
-        }
-    }, [getSectorInfo, sectorid, sectorData, getBestKmosSector])
+        getBestKmosSector(sectorid)
+    }, [sectorid, getBestKmosSector])
 
     const kmoDetails = (data) => {
-        setSingleKmo(data)
+        getKmoByOndernemingsnummer(data)
         navigate('/dashboard')
     }
 
-    if (sectorData?.notFound)
+    if (bestKmosSector?.length === 0)
         return <Navigate to={'/404'} replace />
-
-    if (!loading && sectorData && sectorid === sectorData.code)
+    if (!loading && bestKmosSector?.length !== null)
         return <div className="inside-main">
-            <Title>{sectorData.naam}</Title>
+            <Title>{naam}</Title>
             {
-                bestKmosSector.length > 0 ? <>
-                    <h3>Beste kmo's in '{sectorData.naam}'</h3>
+                bestKmosSector?.length > 0 ? <>
+                    <h3>Beste kmo's in '{naam}'</h3>
                     <hr />
                     <div className="center-table">
                         <table border='1' className="table-top">
@@ -43,10 +39,10 @@ export default function SectorenDetails() {
                             <tbody>
                                 {
                                     bestKmosSector.map((o, i) => {
-                                        return <tr onClick={() => { kmoDetails(o) }} key={o.ondernemingsnummer}>
+                                        return <tr onClick={() => { kmoDetails(o.ondernemingsnummer) }} key={o.ondernemingsnummer}>
                                             <td>{i + 1}</td>
                                             <td>{o.ondernemingsnummer} - {o.naam} - {o.gemeente}</td>
-                                            <td>{o.Score}</td>
+                                            <td>{Math.round(o.total_score*1000)/10}</td>
                                         </tr>
                                     })
                                 }

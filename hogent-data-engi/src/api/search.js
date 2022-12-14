@@ -5,6 +5,11 @@ export const searchKmo = async (searchTerm) => {
     return data;
 }
 
+export const getKmoByOndernemingsnummer = async (ondernemingsnummer) => {
+    const { data } = await axios2.get(`/kmo/${ondernemingsnummer}`)
+    return data
+}
+
 export const getSector = async (sectorId) => {
     const { data } = await axios.get(`/sector/${sectorId}`)
     return data
@@ -16,7 +21,7 @@ export const getHoofdSector = async (sectorId) => {
 }
 
 export const getBestKmosSector = async (sectorId) => {
-    const {data} = await axios.get(`/sector/best/${sectorId}`)
+    const {data} = await axios2.get(`/score/ranking/2021/sector/${sectorId}`)
     return data
 }
 
@@ -26,7 +31,7 @@ export const getBestSectors = async () => {
 }
 
 export const getBestKmosHoofdSector = async (sectorId) => {
-    const { data } = await axios.get(`/hoofdsector/best/${sectorId}`)
+    const { data } = await axios2.get(`/score/ranking/2021/hoofdsector/${sectorId}`)
     return data
 }
 

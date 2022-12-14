@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext, useEffect, useState } from "react";
 import { ImSearch } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
@@ -50,7 +51,7 @@ export default function Sectoren() {
                     {
                         bestSectorsHS ?
                         bestSectorsHS.map((s, i) => {
-                                return <tr key={s.code} onClick={() => {navigate(`/hoofdsectoren/${s.parent}`) }}>
+                                return <tr key={i} onClick={() => {navigate(`/hoofdsectoren/${s.naam}/${s.code}`) }}>
                                     <td>{i+1}</td>
                                     <td>{s.naam}</td>
                                     <td>{Math.round((s.total_score) * 1000) / 10}</td>
@@ -92,9 +93,9 @@ export default function Sectoren() {
                         filtered ?
                             filtered.map((s, i) => {
                                 if (i > 29)
-                                    return <></>
+                                    return <React.Fragment key={s.code}/>
 
-                                return <tr key={s.code} onClick={() => {navigate(`/sectoren/${s.code}`) }}>
+                                return <tr key={s.code} onClick={() => {navigate(`/sectoren/${s.naam}/${s.code}`) }}>
                                     <td>{s.place}</td>
                                     <td>{s.naam}</td>
                                     <td>{Math.round((s.total_score) * 1000) / 10}</td>

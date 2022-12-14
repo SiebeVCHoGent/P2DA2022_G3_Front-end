@@ -1,12 +1,10 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { SearchContext } from "../../contexts/SearchProvider";
-import ReactTooltip from 'react-tooltip';
 
 
 export default function DefaultInfoCompany(){
     const { searchresult: sr } = useContext(SearchContext)
-    console.log(sr)
 
     return <div className="default-info-container">
         <h3>{sr?.Kmo?.naam ? sr.Kmo.naam : 'Geen bedrijf gevonden'}</h3>
@@ -111,7 +109,7 @@ export default function DefaultInfoCompany(){
                     <th>Hoofdsector</th>
                     <td>
                         {
-                            sr?.Hoofdsector?.naam ? <Link to={`/sectoren/${sr.Hoofdsector.code}`}>{sr.Hoofdsector.naam}</Link> : '/'
+                            sr?.Hoofdsector?.naam ? <Link to={`/hoofdsectoren/${sr.Hoofdsector.naam}/${sr.Hoofdsector.code}`}>{sr.Hoofdsector.naam}</Link> : '/'
                         }
                     </td>
                 </tr>
@@ -119,7 +117,7 @@ export default function DefaultInfoCompany(){
                     <th>Subsector</th>
                     <td>
                         {
-                            sr?.Sector?.naam ? <Link to={`/sectoren/${sr.Sector.code}`}>{sr.Sector.naam}</Link> : '/'
+                            sr?.Sector?.naam ? <Link to={`/sectoren/${sr.Sector.naam}/${sr.Sector.code}`}>{sr.Sector.naam}</Link> : '/'
                         }
                     </td>
                 </tr>
