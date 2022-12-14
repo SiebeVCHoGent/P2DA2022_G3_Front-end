@@ -17,9 +17,9 @@ export const SearchProvider = ({ children }) => {
   const [searchresult, setSearchresult] = useState({});
   const [arrResults, setArrResults] = useState([]);
   const [sectorData, setSectorData] = useState();
-  const [bestKmosSector, setBestKmosSector] = useState([]);
+  const [bestKmosSector, setBestKmosSector] = useState(null);
   const [bestSectors, setBestSectors] = useState();
-  const [bestSectorsHS, setBestSectorsHS] = useState();
+  const [bestSectorsHS, setBestSectorsHS] = useState(null);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 

@@ -38,8 +38,10 @@ export const AuthProvider = ({
 		try {
 			setLoading(true);
 			setError('');
-			const { token, user } = await usersApi.login(email, ww);
+			const { token } = await usersApi.login(email, ww);
 			setSession(token);
+			const user = parseJwt(token);
+			delete user.exp;
 			setUser(user);
 			return true;
 		} catch (error) {

@@ -1,11 +1,11 @@
-import {axios} from '.';
+import {axios, axios2} from '.';
 
 export const login = async (email, ww) => {
 	const {
 		data
-	} = await axios.post(`/account/login`, {
-		email,
-		ww
+	} = await axios2.post(`/login`, {
+		email: email,
+		password: ww
 	});
 	return data;
 };
@@ -18,12 +18,12 @@ export const register = async ({
 }) => {
 	const body = {
 		voornaam: voornaam,
-        achternaam: achternaam,
+        naam: achternaam,
 		email: email,
-		ww: ww
+		password: ww
 	}
 	const {
 		data
-	} = await axios.post(`/account/register`, body);
+	} = await axios2.post(`/register`, body);
 	return data;
 };
