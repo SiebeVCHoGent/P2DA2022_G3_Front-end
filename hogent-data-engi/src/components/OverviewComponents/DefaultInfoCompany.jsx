@@ -6,6 +6,7 @@ import ReactTooltip from 'react-tooltip';
 
 export default function DefaultInfoCompany(){
     const { searchresult: sr } = useContext(SearchContext)
+    console.log(sr)
 
     return <div className="default-info-container">
         <h3>{sr?.naam ? sr.naam : 'Geen bedrijf gevonden'}</h3>
@@ -15,47 +16,46 @@ export default function DefaultInfoCompany(){
             <tbody>
                 <tr>
                     <th>Venootschapsnaam</th>
-                    <td>{sr?.naam ? sr.naam : '/'}</td>
+                    <td>{sr?.Kmo?.naam ? sr.Kmo.naam : '/'}</td>
                 </tr>
                 <tr>
                     <th>Ondernemingsnummer</th>
-                    <td>{sr?.ondernemingsnummer ? sr.ondernemingsnummer : '/'}</td>
+                    <td>{sr?.Kmo?.ondernemingsnummer ? sr.Kmo.ondernemingsnummer : '/'}</td>
                 </tr>
                 <tr>
                     <th>Telefoonnummer</th>
-                    <td>{sr?.telefoonnummer ? sr.telefoonnummer : '/'}</td>
+                    <td>{sr?.Kmo?.telefoonnummer ? sr.Kmo.telefoonnummer : '/'}</td>
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td>{sr?.email && sr?.email !== 'NaN' ? <a href={`mailto:${sr.email}`}>{sr.email}</a> : '/'}</td>
+                    <td>{sr?.Kmo?.email && sr?.Kmo.email !== 'NaN' ? <a href={`mailto:${sr.Kmo.email}`}>{sr.Kmo.email}</a> : '/'}</td>
                 </tr>
                 <tr>
                     <th>Adres</th>
-                    <td>{sr?.adres ? sr.adres : '/'}</td>
+                    <td>{sr?.Kmo?.adres ? sr.Kmo.adres : '/'}</td>
                 </tr>
                 <tr className="multirow">
                     <th></th>
-                    <td>{sr?.postcode ? sr.postcode + ', ' : ''}{sr?.gemeente ? sr.gemeente : ''}</td>
+                    <td>{sr?.Gemeente?.postcode ? sr?.Gemeente.postcode + ', ' : ''}{sr?.Gemeente?.naam ? sr?.Gemeente?.naam : ''}</td>
                 </tr>
+                
                 <tr>
                     <th>Website</th>
                     <td>
                         {
-                            sr?.websiteurl
-                            ? 
-                            sr.websiteurl.split(',').map((o, i) => <span key={i}><a href={o} target='_blank' rel="noreferrer" data-tip={o}>[{i +1}] </a><ReactTooltip/></span>)
+                            sr?.verslagen?.length > 0 && sr?.verslagen[0]?.website_url ?
+                            <a href={sr?.verslagen[0]?.website_url}>{sr?.verslagen[0]?.website_url}</a>
                             : '/'
                         }
-                        
                     </td>
                 </tr>
                 <tr>
                     <th>Jaarverslag</th>
                     <td>
                         {
-                            sr?.jaarverslagurl 
-                            ? <a href={sr.jaarverslagurl} target='_blank' rel="noreferrer">Download Jaarverslag</a>
-                            : '/'  
+                            sr?.verslagen?.length > 0 && sr?.verslagen[0]?.jaarverslag_url ?
+                            <a href={sr?.verslagen[0]?.jaarverslag_url}>Download Jaarverslag</a>
+                            : '/'
                         }
                     </td>
                     
@@ -67,35 +67,57 @@ export default function DefaultInfoCompany(){
             <tbody>
                 <tr>
                     <th>Omzetcijfer</th>
-                    <td>{sr?.omzet && sr?.omzet !== '-1' ? '€ ' + sr.omzet : '/'}</td>
+                    <td>
+                        {
+                            sr?.verslagen?.length > 0 && sr?.verslagen[0]?.Verslag?.omzet ?
+                            "€ " + sr?.verslagen[0]?.Verslag?.omzet
+                            : '/'
+                        }
+                    </td>
                 </tr>
                 <tr>
                     <th>Balanstotaal</th>
-                    <td>{sr?.balanstotaal ? '€ ' + sr.balanstotaal : '/'}</td>
+                    <td>
+                    {
+                            sr?.verslagen?.length > 0 && sr?.verslagen[0]?.Verslag?.balanstotaal ?
+                            "€ " + sr?.verslagen[0]?.Verslag?.balanstotaal
+                            : '/'
+                        }
+                    </td>
                 </tr>
-                {/*<tr>
-                    <th>Framework voor duurzaamheidsrapportering</th>
-                    <td>{sr?.duurzaamheidsframework === null ? 'Neen' : (sr?.duurzaamheidsframework ? sr.duurzaamheidsframework : '/')}</td>
-                </tr>*/}
                 <tr>
                     <th>beursgenoteerd</th>
-                    <td>{(sr?.beursgenoteerd === undefined || sr?.beursgenoteerd === null ? '/' : (Boolean(sr?.beursgenoteerd) ? 'Beursgenoteerd' : 'Niet Beursgenoteerd'))}</td>
+                    <td>
+                        {
+                            (sr?.Kmo?.beursgenoteerd === undefined) ? "/" : (Boolean(sr.Kmo.beursgenoteerd) ? "Beursgenoteerd" : "Niet Beursgenoteerd")
+                        }
+                    </td>
                 </tr>
                 <tr>
                     <th>Aantal werknemers</th>
-                    <td>{sr?.aantalwerknemers ? sr.aantalwerknemers : '/'}</td>
+                    <td>
+                    {
+                            sr?.verslagen?.length > 0 && sr?.verslagen[0]?.Verslag?.aantalwerknemers ?
+                            sr?.verslagen[0]?.Verslag?.aantalwerknemers
+                            : '/'
+                        }
+                    </td>
                 </tr>
-                <tr>
+                {/* <tr>
                     <th>B2B of B2C</th>
                     <td>{(sr?.isB2B === undefined || sr?.isB2B === null ? '/' : (Boolean(sr?.isB2B) ? 'B2B' : 'B2C'))}</td>
-                </tr>
-                <tr>
+                </tr> */}
+                {/* <tr>
                     <th>Hoofdsector</th>
                     <td>{sr?.hoofdsector ? <Link to={`/hoofdsectoren/${sr.parent}`}>{sr.hoofdsector}</Link> : '/'}</td>
-                </tr>
+                </tr> */}
                 <tr>
                     <th>Subsector</th>
-                    <td>{sr?.sector ? <Link to={`/sectoren/${sr.code}`}>{sr.sector}</Link> : '/'}</td>
+                    <td>
+                        {
+                            sr?.Sector?.naam ? <Link to={`/sectoren/${sr.Sector.code}`}>{sr.Sector.naam}</Link> : '/'
+                        }
+                    </td>
                 </tr>
             </tbody>
         </table>

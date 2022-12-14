@@ -1,7 +1,7 @@
-import { axios } from ".";
+import { axios, axios2 } from ".";
 
 export const searchKmo = async (searchTerm) => {
-    const {data} = await axios.get(`/kmo/${searchTerm}`);
+    const {data} = await axios2.get(`/kmos?search=${searchTerm}`);
     return data;
 }
 

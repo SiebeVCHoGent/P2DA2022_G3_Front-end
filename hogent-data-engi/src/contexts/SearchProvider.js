@@ -31,7 +31,6 @@ export const SearchProvider = ({ children }) => {
       const data = await api.searchKmo(query);
 
       setArrResults([]);
-
       if (data.kmo.length === 1) setSearchresult(data.kmo[0]);
       else if (data.kmo.length === 0) {
         setSearchresult({});
