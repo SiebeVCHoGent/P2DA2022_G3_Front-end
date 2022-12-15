@@ -41,6 +41,6 @@ export const getBestHoofdSectors = async () => {
 }
 
 export const getGraphData = async (ondernemingsnummer) => {
-    const { data } = await axios2.get(`/score/ranking/2021/kmo/${ondernemingsnummer}`)
+    const { data } = await axios2.get(`/graph/2021/${ondernemingsnummer}`)
     return data
 }
