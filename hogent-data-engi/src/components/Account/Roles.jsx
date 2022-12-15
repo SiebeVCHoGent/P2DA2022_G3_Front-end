@@ -18,7 +18,7 @@ export default function Roles() {
         reset()
         updateRole(foundUser.id, data.rol)
     }
-    console.log(error)
+
     return <div className="inside-main">
         <div className='center'>
             <div className='text-box'>

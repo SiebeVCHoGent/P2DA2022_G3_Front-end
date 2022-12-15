@@ -188,6 +188,24 @@ export const SearchProvider = ({ children }) => {
     }
   }, [ready]);
 
+  const [graphData, setGraphData] = useState(null);
+
+  const getGraphData = useCallback(async (ondernemingsnummer) => {
+    try{
+      setLoading(true);
+      setError();
+      setGraphData(null)
+
+      const data = await api.getGraphData(ondernemingsnummer);
+
+      setGraphData(data);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
   const value = useMemo(
     () => ({
       searchKMO,
@@ -199,6 +217,7 @@ export const SearchProvider = ({ children }) => {
       getBestHoofdSectors,
       getBestKmosHoofdSector,
       getKmoByOndernemingsnummer,
+      getGraphData,
       bestSectorsHS,
       searchresult,
       arrResults,
@@ -207,6 +226,7 @@ export const SearchProvider = ({ children }) => {
       sectorData,
       bestKmosSector,
       bestSectors,
+      graphData, setGraphData
     }),
     [
       searchKMO,
@@ -218,6 +238,7 @@ export const SearchProvider = ({ children }) => {
       getBestHoofdSectors,
       getBestKmosHoofdSector,
       getKmoByOndernemingsnummer,
+      getGraphData,
       bestSectorsHS,
       searchresult,
       arrResults,
@@ -226,6 +247,7 @@ export const SearchProvider = ({ children }) => {
       sectorData,
       bestKmosSector,
       bestSectors,
+      graphData, setGraphData
     ]
   );
 

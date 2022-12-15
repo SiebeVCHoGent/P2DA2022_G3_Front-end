@@ -1,16 +1,14 @@
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Title from "./Title";
 
 
 
 export default function Uitleg() {
-    const navigate = useNavigate()
-    useEffect(() => {
-        navigate('/dashboard')
-    })
+
+
     return <div className="inside-main">
         <Title>Duurzaamheid bij kmo's</Title>
+        <h2>Inleiding</h2>
         <div className="pure-text">
             <p>
                 Op 21 april 2021 werd de nieuwe EU-richtlijn voor duurzaamheidsrapportering voorgesteld. Het doel is dat bedrijven meer gerichte, betrouwbare en gemakkelijk

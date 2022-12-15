@@ -7,6 +7,7 @@ import OpsommingZoeken from "./OpsommingZoeken";
 import { useContext } from "react";
 import { SearchContext } from "../../contexts/SearchProvider";
 import Title from "../Title";
+import CompanyGraphs from "./CompanyGraphs";
 
 
 
@@ -19,7 +20,11 @@ export default function Overview() {
             <div className="dashboard-info-container elements">
                 <SearchBar />
                 {
-                    (arrResults.length > 1 ? <><OpsommingZoeken /></> : (<><DefaultInfoCompany /> <Duurzaamheidsscore className="element element2" /></>))
+                    (arrResults.length > 1 ? <><OpsommingZoeken /></> : (<>
+                    <DefaultInfoCompany />
+                    <Duurzaamheidsscore className="element element2" />
+                    <CompanyGraphs /></>
+                    ))
                 }
             </div>
             {
