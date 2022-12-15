@@ -5,26 +5,59 @@ import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../contexts/SearchProvider";
 import Title from "../Title";
 import ReactLoading from 'react-loading'
+import { useReducer } from 'react';
+
+function reducer(state, field) {
+    if (state.startsWith(field)) {
+        if (state.endsWith('asc')) {
+            return field + '-desc'
+        }else {
+            return "place-asc"
+        }
+    }
+    else {
+        return field + '-asc'
+    }
+}
 
 export default function Sectoren() {
     const { getBestSectors, bestSectors, bestSectorsHS, getBestHoofdSectors,  loading } = useContext(SearchContext)
     const navigate = useNavigate()
     const [filtered, setFiltered] = useState()
+    const [sort, dispatch] = useReducer(reducer, "place-asc")  
+
 
     useEffect(() => {
         if (!bestSectors) {
             getBestSectors()
-        }
-        else
-        {
-            setFiltered(bestSectors.map((v, i) => {v['place'] = i + 1; return v}))
         }
         
         if (!bestSectorsHS) {
             getBestHoofdSectors()
         }
 
-    }, [bestSectors, getBestSectors, bestSectorsHS, getBestHoofdSectors])
+    }, [bestSectors, getBestSectors, bestSectorsHS, getBestHoofdSectors, sort])
+
+    useEffect(() => {
+        setFiltered(bestSectors?.sort(
+            (a, b) => {
+                const spl = sort.split('-')
+                if (spl[1] === 'asc') {
+                    if (spl[0] === 'naam')
+                        return a[spl[0]].localeCompare(b[spl[0]])
+                    else
+                        return a[spl[0]] - b[spl[0]]
+                }
+                else {
+                    if (spl[0] === 'naam')
+                        return b[spl[0]].localeCompare(a[spl[0]])
+                    else
+                        return b[spl[0]] - a[spl[0]]
+                }
+            }
+        ))
+    }, [bestSectors, sort])
+
 
     const filter = (event) => {
         if (bestSectors)
@@ -83,18 +116,15 @@ export default function Sectoren() {
             <table className="table-top" border='1'>
                 <thead>
                     <tr>
-                        <th>N°</th>
-                        <th>Sector</th>
-                        <th>Gemiddelde Score</th>
+                        <th onClick={() => dispatch('place')}>N°</th>
+                        <th onClick={() => dispatch('naam')}>Sector</th>
+                        <th onClick={() => dispatch('total_score')}>Gemiddelde Score</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         filtered ?
                             filtered.map((s, i) => {
-                                if (i > 29)
-                                    return <React.Fragment key={s.code}/>
-
                                 return <tr key={s.code} onClick={() => {navigate(`/sectoren/${s.naam}/${s.code}`) }}>
                                     <td>{s.place}</td>
                                     <td>{s.naam}</td>

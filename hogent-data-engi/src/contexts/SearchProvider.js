@@ -163,7 +163,7 @@ export const SearchProvider = ({ children }) => {
         setError();
 
         const data = await api.getBestSectors();
-        setBestSectors(data.sector);
+        setBestSectors(data.sector.map((v, i) => {v['place'] = i + 1; return v}));
       } catch (error) {
         setError(error);
       } finally {
