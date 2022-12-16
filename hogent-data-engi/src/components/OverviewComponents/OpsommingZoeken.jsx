@@ -10,7 +10,7 @@ export default function OpsommingZoeken(){
         {
             arr.map((o,i) => {
                 return <div key={i} onClick={() => {setSingleKmo(o)}} className='pointer'>
-                    <p> <b>{o?.Kmo?.ondernemingsnummer}</b> - {o?.Kmo?.naam} - {o?.Gemeente?.naam}</p>
+                    <p> <b>{o?.kmo?.ondernemingsnummer}</b> - {o?.kmo?.naam} - {o?.gemeente?.naam}</p>
                     <hr/>
                 </div>
             })

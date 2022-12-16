@@ -7,42 +7,42 @@ export default function DefaultInfoCompany(){
     const { searchresult: sr } = useContext(SearchContext)
 
     return <div className="default-info-container">
-        <h3>{sr?.Kmo?.naam ? sr.Kmo.naam : 'Geen bedrijf gevonden'}</h3>
+        <h3>{sr?.kmo?.naam ? sr.kmo.naam : 'Geen bedrijf gevonden'}</h3>
         <hr/>
         <div className="table-container">
         <table className="table-default-info">
             <tbody>
                 <tr>
                     <th>Venootschapsnaam</th>
-                    <td>{sr?.Kmo?.naam ? sr.Kmo.naam : '/'}</td>
+                    <td>{sr?.kmo?.naam ? sr.kmo.naam : '/'}</td>
                 </tr>
                 <tr>
                     <th>Ondernemingsnummer</th>
-                    <td>{sr?.Kmo?.ondernemingsnummer ? sr.Kmo.ondernemingsnummer : '/'}</td>
+                    <td>{sr?.kmo?.ondernemingsnummer ? sr.kmo.ondernemingsnummer : '/'}</td>
                 </tr>
                 <tr>
                     <th>Telefoonnummer</th>
-                    <td>{sr?.Kmo?.telefoonnummer ? sr.Kmo.telefoonnummer : '/'}</td>
+                    <td>{sr?.kmo?.telefoonnummer ? sr.kmo.telefoonnummer : '/'}</td>
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td>{sr?.Kmo?.email && sr?.Kmo.email !== 'NaN' ? <a href={`mailto:${sr.Kmo.email}`}>{sr.Kmo.email}</a> : '/'}</td>
+                    <td>{sr?.kmo?.email && sr?.kmo.email !== 'NaN' ? <a href={`mailto:${sr.kmo.email}`}>{sr.kmo.email}</a> : '/'}</td>
                 </tr>
                 <tr>
                     <th>Adres</th>
-                    <td>{sr?.Kmo?.adres ? sr.Kmo.adres : '/'}</td>
+                    <td>{sr?.kmo?.adres ? sr.kmo.adres : '/'}</td>
                 </tr>
                 <tr className="multirow">
                     <th></th>
-                    <td>{sr?.Gemeente?.postcode ? sr?.Gemeente.postcode + ', ' : ''}{sr?.Gemeente?.naam ? sr?.Gemeente?.naam : ''}</td>
+                    <td>{sr?.gemeente?.postcode ? sr?.gemeente.postcode + ', ' : ''}{sr?.gemeente?.naam ? sr?.gemeente?.naam : ''}</td>
                 </tr>
                 
                 <tr>
                     <th>Website</th>
                     <td>
                         {
-                            sr?.verslagen?.length > 0 && sr?.verslagen[0]?.website_url ?
-                            <a target="_blank" href={sr?.verslagen[0]?.website_url} rel="noreferrer">{sr?.verslagen[0]?.website_url}</a>
+                            sr?.verslag?.website_url ?
+                            <a target="_blank" href={sr?.verslag?.website_url} rel="noreferrer">{sr?.verslag?.website_url}</a>
                             : '/'
                         }
                     </td>
@@ -51,8 +51,8 @@ export default function DefaultInfoCompany(){
                     <th>Jaarverslag</th>
                     <td>
                         {
-                            sr?.verslagen?.length > 0 && sr?.verslagen[0]?.jaarverslag_url ?
-                            <a href={sr?.verslagen[0]?.jaarverslag_url}>Download Jaarverslag</a>
+                            sr?.verslag?.jaarverslag_url ?
+                            <a href={sr?.verslag?.jaarverslag_url}>Download Jaarverslag</a>
                             : '/'
                         }
                     </td>
@@ -67,9 +67,7 @@ export default function DefaultInfoCompany(){
                     <th>Omzetcijfer</th>
                     <td>
                         {
-                            sr?.verslagen?.length > 0 && sr?.verslagen[0]?.Verslag?.omzet ?
-                            "€ " + sr?.verslagen[0]?.Verslag?.omzet
-                            : '/'
+                            sr?.verslag?.omzet ? "€ " + sr?.verslag?.omzet : '/'
                         }
                     </td>
                 </tr>
@@ -77,9 +75,7 @@ export default function DefaultInfoCompany(){
                     <th>Balanstotaal</th>
                     <td>
                     {
-                            sr?.verslagen?.length > 0 && sr?.verslagen[0]?.Verslag?.balanstotaal ?
-                            "€ " + sr?.verslagen[0]?.Verslag?.balanstotaal
-                            : '/'
+                            sr?.verslag?.balanstotaal ? "€ " + sr?.verslag?.balanstotaal : '/'
                         }
                     </td>
                 </tr>
@@ -87,7 +83,7 @@ export default function DefaultInfoCompany(){
                     <th>beursgenoteerd</th>
                     <td>
                         {
-                            (sr?.Kmo?.beursgenoteerd === undefined) ? "/" : (Boolean(sr.Kmo.beursgenoteerd) ? "Beursgenoteerd" : "Niet Beursgenoteerd")
+                            (sr?.kmo?.beursgenoteerd === undefined) ? "/" : (Boolean(sr.kmo.beursgenoteerd) ? "Beursgenoteerd" : "Niet Beursgenoteerd")
                         }
                     </td>
                 </tr>
@@ -95,9 +91,7 @@ export default function DefaultInfoCompany(){
                     <th>Aantal werknemers</th>
                     <td>
                     {
-                            sr?.verslagen?.length > 0 && sr?.verslagen[0]?.Verslag?.aantalwerknemers ?
-                            sr?.verslagen[0]?.Verslag?.aantalwerknemers
-                            : '/'
+                            sr?.verslag?.aantalwerknemers ? sr.verslag.aantalwerknemers : '/'
                         }
                     </td>
                 </tr>
@@ -109,7 +103,7 @@ export default function DefaultInfoCompany(){
                     <th>Hoofdsector</th>
                     <td>
                         {
-                            sr?.Hoofdsector?.naam ? <Link to={`/hoofdsectoren/${sr.Hoofdsector.naam}/${sr.Hoofdsector.code}`}>{sr.Hoofdsector.naam}</Link> : '/'
+                            sr?.hoofdsector?.naam ? <Link to={`/hoofdsectoren/${sr.hoofdsector.naam}/${sr.hoofdsector.code}`}>{sr.hoofdsector.naam}</Link> : '/'
                         }
                     </td>
                 </tr>
@@ -117,7 +111,7 @@ export default function DefaultInfoCompany(){
                     <th>Subsector</th>
                     <td>
                         {
-                            sr?.Sector?.naam ? <Link to={`/sectoren/${sr.Sector.naam}/${sr.Sector.code}`}>{sr.Sector.naam}</Link> : '/'
+                            sr?.sector?.naam ? <Link to={`/sectoren/${sr.sector.naam}/${sr.sector.code}`}>{sr.sector.naam}</Link> : '/'
                         }
                     </td>
                 </tr>

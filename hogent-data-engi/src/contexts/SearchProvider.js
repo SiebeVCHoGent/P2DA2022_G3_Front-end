@@ -29,8 +29,9 @@ export const SearchProvider = ({ children }) => {
       setError();
 
       const data = await api.searchKmo(query);
-
+      setGraphData(null);
       setArrResults([]);
+
       if (data.kmo.length === 1) setSearchresult(data.kmo[0]);
       else if (data.kmo.length === 0) {
         setSearchresult({});

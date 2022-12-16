@@ -44,7 +44,7 @@ export default function CodingTree() {
         </thead>
         <tbody>
           {
-            !sr?.score || sr?.scores?.length === 0 ? <tr><td colSpan="3">Geen resultaten</td></tr> :
+            !sr?.scores || sr?.scores?.length === 0 ? <tr><td colSpan="3">Geen resultaten</td></tr> :
               sr?.scores?.map((item) => {
 
                 return <tr key={item?.Searchterm?.id} id={item?.Searchterm?.id}>
