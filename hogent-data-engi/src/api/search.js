@@ -44,3 +44,8 @@ export const getGraphData = async (ondernemingsnummer) => {
     const { data } = await axios2.get(`/graph/2021/${ondernemingsnummer}`)
     return data
 }
+
+export const voorspel = async (body) => {
+    const { data } = await axios2.post(`/predict`, body)
+    return data
+}

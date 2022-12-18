@@ -52,7 +52,7 @@ export default function DefaultInfoCompany(){
                     <td>
                         {
                             sr?.verslag?.jaarverslag_url ?
-                            <a href={sr?.verslag?.jaarverslag_url}>Download Jaarverslag</a>
+                            <a href={sr?.verslag?.jaarverslag_url} download={`Jaarverslag ${sr?.kmo?.naam} ${sr?.verslag?.jaar}`}>Download Jaarverslag</a>
                             : '/'
                         }
                     </td>

@@ -522,7 +522,7 @@ hr {
   display: flex;
 }
 
-.input-field{
+.input-field, select{
   width: 100%;
   height: 36px;
   border-radius: 8px;

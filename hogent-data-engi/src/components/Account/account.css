@@ -42,7 +42,7 @@
     margin-bottom: 0;
 }
 
-.input-item input, .submit {
+.input-item input, .submit, .input-item select {
     box-sizing: border-box;
 
     max-width: 100%;
@@ -54,6 +54,11 @@
 
     border-radius: 5px;
     border: 2px solid #CCC;
+}
+
+.input-item select {
+    height: 43px;
+    font-weight: normal;
 }
 
 .submit{

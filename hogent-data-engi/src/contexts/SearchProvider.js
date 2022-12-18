@@ -207,6 +207,21 @@ export const SearchProvider = ({ children }) => {
     }
   }, []);
 
+  const voorspel = useCallback(async (body) => {
+    try{
+      setLoading(true);
+      setError();
+
+      const voorspelling = await api.voorspel(body);
+      return voorspelling
+
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
   const value = useMemo(
     () => ({
       searchKMO,
@@ -227,7 +242,8 @@ export const SearchProvider = ({ children }) => {
       sectorData,
       bestKmosSector,
       bestSectors,
-      graphData, setGraphData
+      graphData, setGraphData,
+      voorspel
     }),
     [
       searchKMO,
@@ -248,7 +264,8 @@ export const SearchProvider = ({ children }) => {
       sectorData,
       bestKmosSector,
       bestSectors,
-      graphData, setGraphData
+      graphData, setGraphData,
+      voorspel
     ]
   );
 
