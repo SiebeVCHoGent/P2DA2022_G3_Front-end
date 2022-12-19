@@ -19,3 +19,9 @@ export const deleteWord = async (term,id) => {
     const { data } = await axios2.delete(`/searchterm/${term}/woord/${id}`)
     return data
 }
+
+export const herbereken = async () => {
+    console.log('test')
+    const { data } = await axios2.post(`/score/recalculate/2021`)
+    return data
+}

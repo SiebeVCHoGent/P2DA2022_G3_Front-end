@@ -21,7 +21,7 @@ export default function Voorspellen() {
         </p>
         <div>
             <h3>Voorspelling</h3>
-            <span className="big-letter">{loading ? "Loading..." : voorspelling ? voorspelling + " punten" : "/"}</span>
+            <span className="big-letter">{loading ? "Loading..." : voorspelling ? Math.round(voorspelling*10)/10 + " punten" : "/"}</span>
             <br />
             <br />
             <form onSubmit={handleSubmit(submit)} className="form-login">
@@ -63,7 +63,7 @@ export default function Voorspellen() {
                     </span>
                     <input type="number" id="balanstotaal" {...register("balanstotaal", { required: true, min: 1 })} />
                 </div>
-                <div className="input-item">
+                {/* <div className="input-item">
                     <label htmlFor="beursgenoteerd">Beursgenoteerd?*</label>
                     {
                         errors?.beursgenoteerd?.type === "required" ?
@@ -73,8 +73,8 @@ export default function Voorspellen() {
                     <select {...register("beursgenoteerd", { required: true })} defaultValue="0" id="beursgenoteerd">
                         <option value={false}>Nee</option>
                         <option value={true}>Ja</option>
-                    </select>
-                </div>
+                    </select>s
+                </div> */}
                 <div className="input-item">
                     <label htmlFor="verstedelijkingsgraad">Verstedelijkingsgraad*</label>
                     {

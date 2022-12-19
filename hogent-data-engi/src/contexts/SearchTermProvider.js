@@ -93,6 +93,22 @@ import {
     const setTheTerm = useCallback(async (term)=>{
       setTerm(term)
     },[])
+
+    const herbereken = useCallback(async (id)=>{
+      if (ready) {
+        try {
+          setLoading(true)
+          setError()
+
+          await api.herbereken(id)
+          
+        } catch (error) {
+          setError(error);
+        } finally {
+          setLoading(false);
+        }
+      }
+    },[ready])
   
    
   
@@ -105,7 +121,8 @@ import {
         ,setWoorden,
         words,
         term,setTheTerm,addWord,
-        deleteWord
+        deleteWord,
+        herbereken
       }),
       [
         getSearchTerms,
@@ -114,7 +131,8 @@ import {
         searchTerms,
         words,
         setWoorden,term,setTheTerm,addWord,
-        deleteWord
+        deleteWord,
+        herbereken
       ]
     );
   

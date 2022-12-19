@@ -424,6 +424,11 @@ hr {
   text-align: center;
 }
 
+.btn.btn-danger {
+  color: red;
+  border: 3px solid red;
+}
+
 .btn{
   max-width: max-content;
   background-color: black;

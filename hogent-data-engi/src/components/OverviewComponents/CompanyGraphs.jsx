@@ -33,8 +33,35 @@ export default function CompanyGraphs() {
         }
     }, [getGraphData, sr?.kmo?.ondernemingsnummer, sr])
 
+    console.log(data?.history)
 
-    
+    // Used for demo purposes
+    const show_data = [
+        {
+            "jaar": 2016,
+            "score": 0.16256
+        },
+        {
+            "jaar": 2017,
+            "score": 0.2556
+        },
+        {
+            "jaar": 2018,
+            "score": 0.4545564
+        },
+        {
+            "jaar": 2019,
+            "score": 0.33125
+        },
+        {
+            "jaar": 2020,
+            "score": 0.501254
+        },
+        {
+            "jaar": 2021,
+            "score": 0.70112
+        },
+    ]
     
 
     return <>
@@ -52,7 +79,7 @@ export default function CompanyGraphs() {
                 <div className="graph-container">
                     <div className="graph" style={{ maxWidth: "950px" }} >
                         <h3>Score per categorie</h3>
-                        <p>Deze grafiek toont de score per categorie in vergelijking met andere kmos in de hoofdsector "{sr?.Hoofdsector?.naam}".</p>
+                        <p>Deze grafiek toont de score per categorie in vergelijking met andere kmos in de hoofdsector "{sr?.hoofdsector?.naam}".</p>
                         <div className="graph-content">
                             <div className="graph-content__bar" style={{ width: '100%', maxWidth: "1000px", height: '500px' }}>
                                 <ResponsiveContainer>
@@ -86,7 +113,9 @@ export default function CompanyGraphs() {
                         <div className="graph-content">
                             <div className="graph-content__bar" style={{ width: '100%', maxWidth: "1000px", height: '500px' }}>
                             <ResponsiveContainer>
+                                {/* <LineChart width={1000} height={400} data={show_data.map(s => ({ ...s, score: Math.round(s.score * 1000) / 10 }))} */}
                                 <LineChart width={1000} height={400} data={data?.history?.map(s => ({ ...s, score: Math.round(s.score * 1000) / 10 }))}
+                                
                                 margin={{ top: 30, right: 40, left: 20, bottom: 30 }}
                                 >
                                     <XAxis dataKey={'jaar'} type="number" domain={['dataMin -1', 'dataMax + 1']} tickFormatter={(tick) => {return Math.floor(tick);}}/>

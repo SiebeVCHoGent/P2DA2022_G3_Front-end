@@ -7,13 +7,17 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 
 
 export default function SearchTerms() {
-    const { getSearchTerms, searchTerms, loading, setTheTerm, term } = useContext(SearchTermContext)
+    const { getSearchTerms, searchTerms, loading, setTheTerm, term, herbereken: herberekenenCon } = useContext(SearchTermContext)
 
     useEffect(() => {
         if (!searchTerms) {
             getSearchTerms()
         }
     }, [searchTerms, getSearchTerms])
+
+    const herberekenen = async () => {
+        await herberekenenCon()
+    }
 
     const Actions = memo((props)=>{
         return <>
@@ -62,5 +66,15 @@ export default function SearchTerms() {
                 }
             </tbody>
         </table>
+        <h2>Herberkenen van de scores</h2>
+        <p>
+            Door op de knop hieronder te klikken kan je al de scores herberekenen. Dit kan enkele minuten duren.
+            <br />
+            De scores zullen enkel veranderen indien er een
+            aanpassing is geweest in de woorden. Indien er geen aanpassing is geweest, zullen de scores niet veranderen.
+            <br />
+            Gebruik deze knop niet te veel want de berekening is vrij intensief.
+        </p>
+        <button className="btn btn-danger" onClick={() => herberekenen()}>Scores Herberekenen</button>
     </div>
 }
