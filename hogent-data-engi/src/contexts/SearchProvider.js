@@ -222,6 +222,7 @@ export const SearchProvider = ({ children }) => {
     }
   }, []);
 
+  
   const value = useMemo(
     () => ({
       searchKMO,

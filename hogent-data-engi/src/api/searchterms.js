@@ -25,3 +25,20 @@ export const herbereken = async () => {
     const { data } = await axios2.post(`/score/recalculate/2021`)
     return data
 }
+
+
+export const addSearchtermWithParent = async (term, parent) => {
+    const { data } = await axios2.post(`/searchterm/${term}/parent/${parent?.id}`)
+    return data
+}
+
+
+export const addSearchtermWithoutParent = async (term) => {
+    const { data } = await axios2.post(`/searchterm/${term}`)
+    return data
+}
+
+export const deleteSearchterm = async (id) => {
+    const { data } = await axios2.delete(`/searchterm/${id}`)
+    return data
+}

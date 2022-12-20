@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { SearchContext } from "../../contexts/SearchProvider"
-import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Scatter, Tooltip, XAxis, YAxis, ZAxis } from 'recharts'
+import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Scatter, Tooltip, XAxis, YAxis } from 'recharts'
 import { useEffect } from "react"
 
 function CustomDot({ cx, cy, stroke, payload }) {
@@ -36,32 +36,7 @@ export default function CompanyGraphs() {
     console.log(data?.history)
 
     // Used for demo purposes
-    const show_data = [
-        {
-            "jaar": 2016,
-            "score": 0.16256
-        },
-        {
-            "jaar": 2017,
-            "score": 0.2556
-        },
-        {
-            "jaar": 2018,
-            "score": 0.4545564
-        },
-        {
-            "jaar": 2019,
-            "score": 0.33125
-        },
-        {
-            "jaar": 2020,
-            "score": 0.501254
-        },
-        {
-            "jaar": 2021,
-            "score": 0.70112
-        },
-    ]
+    //const show_data = [{"jaar": 2016,"score": 0.16256},{"jaar": 2017,"score": 0.2556},{"jaar": 2018,"score": 0.4545564},{"jaar": 2019,"score": 0.33125},{"jaar": 2020,"score": 0.501254},{"jaar": 2021,"score": 0.70112}]
     
 
     return <>

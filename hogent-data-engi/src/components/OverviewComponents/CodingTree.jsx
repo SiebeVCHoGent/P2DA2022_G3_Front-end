@@ -1,32 +1,7 @@
 import './CodingTree.css'
 
-import React, { /*Children,*/ useEffect } from 'react'
-
-
 import { useContext, /*useMemo*/ } from 'react'
 import { SearchContext } from '../../contexts/SearchProvider'
-import ReactTooltip from 'react-tooltip'
-
-const tree_connections = [
-  ['duurzaamheid_kmos', 'menselijk'],
-  ['duurzaamheid_kmos', 'natuurlijk'],
-  ['menselijk', 'gendergelijkheid'],
-  ['menselijk', 'werknemersrechten'],
-  ['menselijk', 'sociale_relaties'],
-  ['menselijk', 'werkgelegenheid'],
-  ['menselijk', 'organisatie'],
-  ['menselijk', 'gezondheid_en_veiligheid'],
-  ['menselijk', 'opleidingsbeleid'],
-
-  ['natuurlijk', 'energiebronnen'],
-  ['natuurlijk', 'waterbronnen'],
-  ['natuurlijk', 'broeikasgassen'],
-  ['natuurlijk', 'vervuilende_uitstoot'],
-  ['natuurlijk', 'milieu_impact'],
-  ['natuurlijk', 'impact_g_v'],
-  ['natuurlijk', 'veobo'],
-  ['natuurlijk', 'milieu_beleid'],
-]
 
 export default function CodingTree() {
 
@@ -34,7 +9,7 @@ export default function CodingTree() {
 
   return <div className="coding-tree-container">
     <div >
-      <table className='table-top  w-100'>
+      <table className='table-top fa w-100'>
         <thead>
           <tr>
             <th>Term</th>

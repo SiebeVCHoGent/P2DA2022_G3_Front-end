@@ -3,11 +3,26 @@ import { SearchTermContext } from "../../contexts/SearchTermProvider";
 import ReactLoading from 'react-loading'
 import Title from "../Title";
 import Words from './Words'
-import { BsFillInfoCircleFill } from "react-icons/bs";
+import { BsFillDashCircleFill, BsFillInfoCircleFill, BsPlusCircleFill, BsFillTrashFill } from "react-icons/bs";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 
 export default function SearchTerms() {
-    const { getSearchTerms, searchTerms, loading, setTheTerm, term, herbereken: herberekenenCon } = useContext(SearchTermContext)
+    const { getSearchTerms, searchTerms, loading, setTheTerm, term, herbereken: herberekenenCon, addSearchterm, deleteSearchterm} = useContext(SearchTermContext)
+
+
+    const { register, handleSubmit, reset } = useForm();
+    const [ parent, setParent ] = useState(null)
+
+    const onSubmitNewSearchterm = async (data) => {
+        await addSearchterm(data?.searchterm, parent)
+        reset()
+    }
+
+    const deleteTerm = async (term) => {
+        await deleteSearchterm(term.id)
+    }
 
     useEffect(() => {
         if (!searchTerms) {
@@ -19,19 +34,23 @@ export default function SearchTerms() {
         await herberekenenCon()
     }
 
-    const Actions = memo((props)=>{
+
+    const Actions = memo(({term})=>{
         return <>
-           <BsFillInfoCircleFill className="icon"/>
+           <BsFillInfoCircleFill className="icon click" onClick={() => setTheTerm(term)}/>
+           <BsFillTrashFill className="icon click" onClick={() => deleteTerm(term)}/>
+           <BsPlusCircleFill className={`icon click ${parent?.id === term?.id ? "selected" : ""}`} onClick={() => {setParent(term)}} />
         </>
     })
+
 
     function printAllChildren (children) {
         return children.map((c,i)=>{
             return <React.Fragment key={i}>
-                <tr key={c.id} onClick={() => setTheTerm(c)}>
+                <tr key={c.id}>
                     <td></td>
                     <td>{c.term}</td>
-                    <td><Actions/></td>
+                    <td><Actions term={c}/></td>
                 </tr>
                 {c?.children ? printAllChildren(c.children) : <></>}
             </React.Fragment>
@@ -44,6 +63,13 @@ export default function SearchTerms() {
         <h3>Overzicht van alle zoektermen.</h3>
         <hr></hr>
         {loading ? <ReactLoading type="bars" color="#000"/> : <></>}
+        <form onSubmit={handleSubmit(onSubmitNewSearchterm)}>
+            <div className="flex-2">
+                <input className="input-field w-50" required placeholder={`Nieuwe zoekterm (${parent ? `met parent ${parent?.term}` : 'zonder parent'})`} {...register("searchterm", {required:true})}/>
+                <span><BsFillDashCircleFill className="icon click" onClick={() => {reset(); setParent(null)}}/> <BsPlusCircleFill className="icon click" onClick={handleSubmit(onSubmitNewSearchterm)}/></span>
+            </div>
+        </form>
+        <br />
         <table className="table-top w-100 ">
             <thead>
                 <tr>
@@ -52,13 +78,13 @@ export default function SearchTerms() {
                     <td>Acties</td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="no_hover">
                 {
                     searchTerms ? searchTerms.map((s, i) => {
-                        return <React.Fragment key={i}><tr key={s.id} onClick={() => setTheTerm(s)}>
+                        return <React.Fragment key={i}><tr key={s.id}>
                             <td>{s.term}</td>
                             <td></td>
-                            <td><Actions /></td>
+                            <td><Actions term={s}/></td>
                         </tr>
                             {s.children ? printAllChildren(s.children) : <></>}
                         </ React.Fragment>

@@ -199,6 +199,14 @@ header {
 
 .icon {
   font-size: 30px;
+  margin: 5px;
+}
+.icon.selected{
+  color: #bb90bd;
+}
+
+.icon.click{
+  cursor: pointer;
 }
 
 .icon:hover {
@@ -494,6 +502,10 @@ hr {
   background-color: #f5f5f5;
 }
 
+.table-top tbody.no_hover tr:hover {
+  cursor: auto;
+}
+
 .table-top th,
 .table-top td {
   padding: 10px;
@@ -509,7 +521,7 @@ hr {
   font-weight: bold;
 }
 
-.table-top.a tr {
+.table-top.fa tr {
   text-align: center;
   font-weight: bold;
 }
