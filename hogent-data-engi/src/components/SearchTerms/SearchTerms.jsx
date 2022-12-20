@@ -7,6 +7,17 @@ import { BsFillDashCircleFill, BsFillInfoCircleFill, BsPlusCircleFill, BsFillTra
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
+function makeAbbrivation (term) {
+    if (term == null)
+    return ""
+
+    let abbr = ""
+    let split = term.split(" ")
+    split.forEach((s) => {
+        abbr += s.charAt(0)
+    })
+    return abbr + " - "
+}
 
 export default function SearchTerms() {
     const { getSearchTerms, searchTerms, loading, setTheTerm, term, herbereken: herberekenenCon, addSearchterm, deleteSearchterm} = useContext(SearchTermContext)
@@ -43,16 +54,15 @@ export default function SearchTerms() {
         </>
     })
 
-
-    function printAllChildren (children) {
+    function printAllChildren (children, parent) {
         return children.map((c,i)=>{
             return <React.Fragment key={i}>
                 <tr key={c.id}>
                     <td></td>
-                    <td>{c.term}</td>
+                    <td>{makeAbbrivation(parent?.term)}{c.term}</td>
                     <td><Actions term={c}/></td>
                 </tr>
-                {c?.children ? printAllChildren(c.children) : <></>}
+                {c?.children ? printAllChildren(c.children, c) : <></>}
             </React.Fragment>
         })
     }
