@@ -8,18 +8,21 @@ import { useContext } from "react";
 import { SearchContext } from "../../contexts/SearchProvider";
 import Title from "../Title";
 import CompanyGraphs from "./CompanyGraphs";
+import ReactLoading from 'react-loading'
 
 
 
 export default function Overview() {
-    const { arrResults } = useContext(SearchContext)
-    console.log(arrResults)
+    const { arrResults,loading } = useContext(SearchContext)
 
     return <div className="inside-main">
         <Title>Dashboard</Title>
         <div className="main-container">
             <div className="dashboard-info-container elements">
                 <SearchBar />
+                {
+                loading ? <ReactLoading type="bars" color="#000"/> : <></>
+                }
                 {
                     (arrResults.length > 1 ? <><OpsommingZoeken /></> : (<>
                     <DefaultInfoCompany />

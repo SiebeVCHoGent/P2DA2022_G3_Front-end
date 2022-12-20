@@ -34,7 +34,7 @@ export default function CodingTree() {
 
   return <div className="coding-tree-container">
     <div >
-      <table className='table-top a w-100'>
+      <table className='table-top  w-100'>
         <thead>
           <tr>
             <th>Term</th>

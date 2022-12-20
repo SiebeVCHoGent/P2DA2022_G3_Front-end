@@ -34,17 +34,19 @@ body {
   display: flex;
 }
 
-a {
+a,
+.a {
   color: #bb90bd;
   text-decoration: none;
   font-weight: bold;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }
 
-.add, .remove {
+.add,
+.remove {
   color: #bb90bd;
   font-size: 25px;
 
@@ -52,15 +54,15 @@ a {
   display: inline-block;
   vertical-align: middle;
   line-height: normal;
-  
+
 }
 
-.nav .a{
+.nav .a {
   color: white;
   font-weight: normal;
 }
 
-.nav .a:hover{
+.nav .a:hover {
   font-weight: bold;
 }
 
@@ -88,7 +90,7 @@ main {
 }
 
 .marginbottom {
-margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .inside-main {
@@ -180,13 +182,13 @@ th {
 }
 
 /*-------Header-------*/
-header{
+header {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
-.top-icons{
+.top-icons {
   max-width: 120px;
   padding-right: 20px;
   display: flex;
@@ -195,21 +197,21 @@ header{
   flex-direction: row;
 }
 
-.icon{
+.icon {
   font-size: 30px;
 }
 
-.icon:hover{
+.icon:hover {
   color: #bb90bd;
   transition: .2s;
 }
 
-.flag img{
+.flag img {
   margin-top: 8px;
   max-width: 30px;
 }
 
-.nav-icons{
+.nav-icons {
   font-size: 30px;
   margin-top: 10px;
 }
@@ -218,7 +220,7 @@ header{
   color: black;
 }
 
-.cirkel-profile{
+.cirkel-profile {
   position: relative;
   overflow: hidden;
   border-radius: 50%;
@@ -238,7 +240,7 @@ header{
   height: auto;
 }
 
-.search-div{
+.search-div {
   width: 100%;
 }
 
@@ -295,7 +297,7 @@ hr {
 
 .default-info-container {
   margin-top: 30px;
-  max-width:900px;
+  max-width: 900px;
 }
 
 .table-economics {
@@ -355,7 +357,7 @@ hr {
   font-weight: bold;
 }
 
-.big-letters{
+.big-letters {
   display: flex;
   align-items: center;
   margin: 0;
@@ -368,7 +370,7 @@ hr {
   margin: 0;
 }
 
-.big-letter.smaller{
+.big-letter.smaller {
   font-family: 'Montserat-Black';
   font-size: 30px;
   padding-left: 30px;
@@ -397,23 +399,23 @@ hr {
   width: 600px;
 }
 
-.pure-text{
+.pure-text {
   max-width: 800px;
 }
 
-.title-404{
+.title-404 {
   font-size: 60px;
   font-family: 'Montserat-Black';
 }
 
-.text-404{
+.text-404 {
   font-size: 200px;
   font-family: 'Montserat-Black';
 
   text-shadow: 10px 10px 2px #bb90bd;
 }
 
-.container-404{
+.container-404 {
   margin: 30px;
   height: 100%;
   display: flex;
@@ -429,7 +431,7 @@ hr {
   border: 3px solid red;
 }
 
-.btn{
+.btn {
   max-width: max-content;
   background-color: black;
   border: none;
@@ -438,69 +440,71 @@ hr {
   border-radius: 3px;
 
   font-weight: bold;
-  color:white;
+  color: white;
 }
 
 
-.btn:hover{
+.btn:hover {
   background-color: rgb(41, 41, 41);
 }
 
-.capitalize{
+.capitalize {
   text-transform: capitalize;
 }
 
-.zoektermen-container{
+.zoektermen-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0 50px
 }
 
-.zoektermen-subcontainer{
+.zoektermen-subcontainer {
   margin-right: 20px;
 }
 
-.zoektermen-container ul{
+.zoektermen-container ul {
   list-style: none;
   padding: 0;
 }
 
-.center-table{
+.center-table {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.table-top{
+.table-top {
   border-spacing: 0px;
   flex: 0 1 auto;
   width: 100%;
   max-width: 1000px;
 }
 
-.table-top thead{
+.table-top thead {
   background-color: black;
   color: white;
 }
 
-.table-top tbody tr{
+.table-top tbody tr {
   cursor: pointer;
 }
 
-.table-top tbody tr:hover{
+.table-top tbody tr:hover {
   background-color: #f5f5f5;
 }
 
-.table-top th, .table-top td{
+.table-top th,
+.table-top td {
   padding: 10px;
 }
 
-.table-top td td:nth-of-type(2){
+.table-top td td:nth-of-type(2) {
   padding-left: 10px 5px;
 }
 
-.table-top tr td:first-of-type, .table-top tr td:last-of-type{
+.table-top tr td:first-of-type,
+.table-top tr td:last-of-type {
   text-align: center;
   font-weight: bold;
 }
@@ -510,24 +514,25 @@ hr {
   font-weight: bold;
 }
 
-.search-container-sector{
+.search-container-sector {
   margin-bottom: 30px;
   width: 100%;
 }
 
-.w-100{
+.w-100 {
   width: 100%;
 }
 
-.w-50{
+.w-50 {
   max-width: 50%;
 }
 
-.flex-2{
+.flex-2 {
   display: flex;
 }
 
-.input-field, select{
+.input-field,
+select {
   width: 100%;
   height: 36px;
   border-radius: 8px;
@@ -535,4 +540,5 @@ hr {
   padding-left: 15px;
   font-weight: bold;
 }
+
 /*# sourceMappingURL=App.css.map */

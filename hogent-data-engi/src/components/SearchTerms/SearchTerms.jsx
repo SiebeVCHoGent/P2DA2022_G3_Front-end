@@ -44,7 +44,7 @@ export default function SearchTerms() {
         <h3>Overzicht van alle zoektermen.</h3>
         <hr></hr>
         {loading ? <ReactLoading type="bars" color="#000"/> : <></>}
-        <table className="table-top w-100 a">
+        <table className="table-top w-100 ">
             <thead>
                 <tr>
                     <td>Hoofdtitel</td>

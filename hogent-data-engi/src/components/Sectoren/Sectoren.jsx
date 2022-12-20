@@ -36,7 +36,7 @@ export default function Sectoren() {
             getBestHoofdSectors()
         }
 
-    }, [bestSectors, getBestSectors, bestSectorsHS, getBestHoofdSectors, sort])
+    }, [bestSectors, getBestSectors, bestSectorsHS, getBestHoofdSectors])
 
     useEffect(() => {
         setFiltered(bestSectors?.sort(

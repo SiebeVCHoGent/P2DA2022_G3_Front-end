@@ -28,7 +28,7 @@ export default function Words() {
         <h3>De zoekwoorden van "{term.term}"</h3>
         <hr/>
 
-        <p onClick={()=>{setTheTerm(undefined); setWoorden(0,true)}} className='pointer'><a className="link">Ga Terug</a></p>
+        <p onClick={()=>{setTheTerm(undefined); setWoorden(0,true)}} className='pointer a'>Ga Terug</p>
         {loading ? <ReactLoading type="bars" color="#000"/> : <></>}
 
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -37,7 +37,7 @@ export default function Words() {
             </div>
         </form>
         <br />
-        <table className="table-top a w-100">
+        <table className="table-top w-100">
             <thead>
                 <tr>
                     <td>Woord</td>
